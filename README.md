@@ -2,7 +2,7 @@
 
 A minimal interactive story engine.
 
-## Getting started with the default `index.html`
+## Quick start
 
 The story is written in either YAML or JSON, with something like:
 
@@ -40,7 +40,7 @@ The whole thing is made to be hacked as you want, the code being quite short (<3
 
 ### `setFlag/removeFlag`: Setting flags
 
-You can set and remove flags when landing on a step:
+You can set and remove flags when reaching a step:
 
 ```     
     finding_sword:
@@ -56,7 +56,7 @@ You can set and remove flags when landing on a step:
 
 ### `ifFlag/ifNotFlag`: Using flags
 
-Then you can show or hide links according to these flags, by using an alternate link format:
+Flags are used to show or hide links, with the help of an alternate link format:
 
 ```     
     monster_encounter:
@@ -79,7 +79,7 @@ Then you can show or hide links according to these flags, by using an alternate 
 
 ### `{{#test}}{{/test}}`: Using flags in text
 
-You can also flavor your text according to the flags, thanks to Mustache templating.
+You can also flavor your text with the flags, thanks to Mustache templating.
 
 ```                 
     monster:
@@ -92,7 +92,7 @@ You can also flavor your text according to the flags, thanks to Mustache templat
 
 * `url`: URL to either your YAML or JSON story.
 * `targetDomId`: ID of the DOM element where the story will be displayed
-* `templateDomId`: ID of a <script> element containing the step template (Mustache syntax), see `index.html` for an example. 
+* `templateDomId`: ID of a &lt;script> element containing the step template (Mustache syntax), see `index.html` for an example. 
 * `callback`: Optional callback to be called when the game has finished loading. Gets the `game` as a parameter (its API is not documented, see the sources), or false if the URL yields a 404.
 
 Loading the game will throw errors (with hopefully useful messages) if the story doesn't pass validation.
