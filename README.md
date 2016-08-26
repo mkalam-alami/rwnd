@@ -8,28 +8,28 @@ The story is written in either YAML or JSON, with something like:
 
 ```
 config:
-    start: 'step1'
+    start: 'initialStep'
     
 steps: 
 
-    step1:
-        text: "This is step 1."
+    initialStep:
+        text: "You are in a cave. You can turn left or right."
         links:
-            step2: Step 2
-            step3: Step 3
+            left: Turn left
+            right: Turn right
             
-    step2:
-        text: "This is step 2."
+    left:
+        text: "You turned left. As you walk, the corridor bends to the right."
         links:
-            step3: Step 3
+            theEnd: The end
                 
-    step3:
-        text: "This is step 3."
+    right:
+        text: "You turned right. As you walk, the corridor bends to the left."
         links:
             theEnd: The end
             
     theEnd:
-        text: "This is the end."
+        text: "You came back to where you came from. The end."
 ```
 
 Just put your story in a `game.yaml` at the root, serve with your favorite web server (I like [http-server](https://www.npmjs.com/package/http-server) for development) and play by browsing to `index.html`.
@@ -60,21 +60,21 @@ Then you can show or hide links according to these flags, by using an alternate 
 
 ```     
     monster_encounter:
-        text: A monster attacks you!
+        text: "A monster attacks you!"
         links:
           flee: Flee
           attack_monster:
             ifFlag: sword
-            text: Attack with your sword
+            text: "Attack with your sword"
 ```
 
 ```     
     pnj_encounter:
-        text: Do you have a sword?
+        text: "Do you have a sword?"
         links:
           pnj_lie:
             ifNotFlag: sword
-            text: Yes (lie)
+            text: "Yes (lie)"
 ```
 
 ## API
