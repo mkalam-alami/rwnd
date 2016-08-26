@@ -1,0 +1,30 @@
+{
+    "config": {
+        "start": "step1"
+    },
+    "steps": {
+        "step1": {
+            "text": "This is step 1.",
+            "links": {
+                "step2": "Step 2",
+                "step3": "Step 3"
+            }
+        },
+        "step2": {
+            "text": "This is step 2.",
+            "links": {
+                "step3": "Step 3",
+                "theend": "The end"
+            }
+        },
+        "step3": {
+            "text": "This is step 3.",
+            "links": {
+                "theend": "The end"
+            }
+        },
+        "theend": {
+            "text": "This is the end."
+        }
+    }
+}
