@@ -2,7 +2,7 @@
 
 A minimal interactive story engine.
 
-## Getting started
+## Getting started with the default `index.html`
 
 The story is written in either YAML or JSON, with something like:
 
@@ -36,7 +36,7 @@ Just put your story in a `game.yaml` at the root, serve with your favorite web s
 
 The whole thing is made to be hacked as you want, the code being quite short (<300 lines), and hopefully readable.
 
-## Features
+## Story format features
 
 ### `setFlag/removeFlag`: Setting flags
 
@@ -77,7 +77,15 @@ Then you can show or hide links according to these flags, by using an alternate 
             text: Yes (lie)
 ```
 
-### Configuration
+## API
 
-* `start`: Mandatory. Sets the initial step.
-* `persistFlags`: Allows to persist flags even if you rewind in the story. Unusual, but can lead to interesting gameplay (defaults to false).
+### `rwnd.loadFile(url, targetDomId, templateDomId[, callback])`
+
+* `url`: URL to either your YAML or JSON story.
+* `targetDomId`: ID of the DOM element where the story will be displayed
+* `templateDomId`: ID of a <script> element containing the step template (same syntax as [Underscore's templating](http://underscorejs.org/#template), see `index.html` for an example template). 
+* `callback`: Optional callback to be called when the game has finished loading. Gets the `game` as a parameter (its API is not documented, see the sources).
+
+### `rwnd.loadFile(data, targetDomId, templateDomId)`
+
+Same as the previous call, except you're passing the YAML/JSON story directly. The game will be loaded synchronously and return the `game`.
