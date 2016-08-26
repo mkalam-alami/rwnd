@@ -42,8 +42,17 @@ a:hover {
     line-height: 1.5rem;
 }
 
+.rwnd-step {
+    opacity: 1.0;
+    transition: 0.5s;
+}
+
 .rwnd-links {
     font-weight: bold;
     margin-left: 10px;
     padding-bottom: 20px;
+}
+
+.rwnd-hidden {
+    opacity: 0.0 !important;
 }
