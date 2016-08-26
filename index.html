@@ -18,7 +18,7 @@
     <p class="rwnd-links">
     <% for (var linkId in links) { %>
         <a id="<%= linksElIds[linkId] %>" href="#" 
-            data-rwnd-step="<%= id %>" data-rwnd-link="<%= linkId %>">[ <%= links[linkId].text %> ]</a>
+            data-rwnd-state="<%= stateId %>" data-rwnd-link="<%= linkId %>">[ <%= links[linkId].text %> ]</a>
     <% } %>
     </p>
 </div>
