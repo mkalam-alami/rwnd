@@ -30,9 +30,9 @@ steps:
         text: "You came back to where you came from: the end."
 ```
 
-1. Write your story
-2. Put the `game.yaml` (or `game.json`) file at the root
-3. Serve with your favorite web server (I like [http-server](https://www.npmjs.com/package/http-server) for development).
+1. Write your story in a `game.yaml` (or `game.json`) file at the root
+2. Serve with your favorite web server (I like [http-server](https://www.npmjs.com/package/http-server) for development).
+3. Play!
 
 The whole thing is made to be hacked as you want, the code being quite short (<300 lines) and hopefully readable.
 
