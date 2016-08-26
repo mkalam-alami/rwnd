@@ -93,10 +93,10 @@ You can also flavor your text with the flags, thanks to Mustache templating.
 * `url`: URL to either your YAML or JSON story.
 * `targetDomId`: ID of the DOM element where the story will be displayed
 * `templateDomId`: ID of a &lt;script> element containing the step template (Mustache syntax), see `index.html` for an example. 
-* `callback`: Optional callback to be called when the game has finished loading. Gets the `game` as a parameter (its API is not documented, see the sources), or false if the URL yields a 404.
+* `callback`: Optional callback to be called when the game has finished loading. The callback gets the `game` as a parameter (its API is not documented, see the sources), or false if the URL yields a 404.
 
-Loading the game will throw errors (with hopefully useful messages) if the story doesn't pass validation.
+If the story doesn't pass validation, loading the game will throw errors - with hopefully useful messages.
 
 ### `rwnd.loadFile(data, targetDomId, templateDomId)`
 
-Same as the previous call, except you're passing the YAML/JSON story directly. The game will be loaded synchronously and return the `game`.
+Same as the previous call, except you're passing the YAML/JSON story directly (string or JSON object). The game will be loaded synchronously and return the `game`.
