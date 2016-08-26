@@ -1,34 +1,34 @@
 config:
-
-    start: 'step1'
-    persistFlags: false
+    start: initialStep
     
 steps: 
-
-    step1:
-        text: "This is step 1."
+    initialStep:
+        text: You are in a cave. You can turn left or right.
         links:
-            step2: Step 2
-            step3: Step 3
+            left: Turn left
+            right: Turn right
             
-    step2:
-        text: "This is step 2."
-        setFlag: altEnd
+    left:
+        text: You turned left. You find a sword. As you walk, the corridor bends to the right.
+        setFlag: sword
         links:
-            step3: Step 3
+            monster: Keep walking
                 
-    step3:
-        text: "This is step 3."
+    right:
+        text: You turned right. As you walk, the corridor bends to the left.
         links:
-            theEnd:
-                ifNotFlag: altEnd
-                text: The end
-            theAltEnd:
-                ifFlag: altEnd
-                text: The alternate end
+            monster: Keep walking
+            
+    monster:
+        text: A goblin appears! {{#sword}}It looks at your sword and hesitates...{{/sword}}
+        links: 
+            fleeEnd: Flee
+            victoryEnd:
+                ifFlag: sword
+                text: Attack it with your sword
                 
-    theEnd:
-        text: "This is the end."
+    fleeEnd:
+        text: "You came back to where you came from: the end."
         
-    theAltEnd:
-        text: "This is the alternate end."
+    victoryEnd:
+        text: The globlin flees and leaves a treasure behind him. You win!
