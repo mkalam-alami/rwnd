@@ -14,13 +14,13 @@
 
 <script id="rwnd-template" type="text/template">
 <div id="<%= elId %>">
-<p class="rwnd-text"><%= text %></p>
-<p class="rwnd-links">
-<% for (var linkId in links) { %>
-    <a id="<%= linksElIds[linkId] %>" href="#" 
-        data-rwnd-step="<%= id %>" data-rwnd-link="<%= linkId %>">[ <%= links[linkId] %> ]</a>
-<% } %>
-</p>
+    <p class="rwnd-text"><%= text %></p>
+    <p class="rwnd-links">
+    <% for (var linkId in links) { %>
+        <a id="<%= linksElIds[linkId] %>" href="#" 
+            data-rwnd-step="<%= id %>" data-rwnd-link="<%= linkId %>">[ <%= links[linkId] %> ]</a>
+    <% } %>
+    </p>
 </div>
 </script>
 
