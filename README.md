@@ -2,9 +2,9 @@
 
 A minimal interactive story engine.
 
-## Minimal example
+## Getting started
 
-The story is written in either YAML or JSON:
+The story is written in either YAML or JSON, with something like:
 
 ```
 config:
