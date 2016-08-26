@@ -1,30 +1,41 @@
 {
-    "config": {
-        "start": "step1"
+  "config": {
+    "start": "step1",
+    "persistFlags": true
+  },
+  "steps": {
+    "step1": {
+      "text": "This is step 1.",
+      "links": {
+        "step2": "Step 2",
+        "step3": "Step 3"
+      }
     },
-    "steps": {
-        "step1": {
-            "text": "This is step 1.",
-            "links": {
-                "step2": "Step 2",
-                "step3": "Step 3"
-            }
+    "step2": {
+      "text": "This is step 2.",
+      "setFlag": "altEnd",
+      "links": {
+        "step3": "Step 3"
+      }
+    },
+    "step3": {
+      "text": "This is step 3.",
+      "links": {
+        "theEnd": {
+          "ifNotFlag": "altEnd",
+          "text": "The end"
         },
-        "step2": {
-            "text": "This is step 2.",
-            "links": {
-                "step3": "Step 3",
-                "theend": "The end"
-            }
-        },
-        "step3": {
-            "text": "This is step 3.",
-            "links": {
-                "theend": "The end"
-            }
-        },
-        "theend": {
-            "text": "This is the end."
+        "theAltEnd": {
+          "ifFlag": "altEnd",
+          "text": "The alternate end"
         }
+      }
+    },
+    "theEnd": {
+      "text": "This is the end."
+    },
+    "theAltEnd": {
+      "text": "This is the alternate end."
     }
+  }
 }
