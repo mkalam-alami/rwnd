@@ -28,8 +28,10 @@
 <script type="text/javascript" src="lib/rwnd.js"></script>
 <script type="text/javascript">
 rwnd.loadFile('game.yaml', 'rwnd-container', 'rwnd-template', function(game) {
-    if (!game) {
-        rwnd.loadFile('game.json', 'rwnd-container', 'rwnd-template');
+    if (!game) { 
+        rwnd.loadFile('game.json', 'rwnd-container', 'rwnd-template', function(game) { // look for a json version?
+            if (!game) rwnd.loadFile('game.yaml.example', 'rwnd-container', 'rwnd-template'); // or just load the demo file.
+        });
     }
 });
 </script>
