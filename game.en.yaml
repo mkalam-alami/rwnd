@@ -1,4 +1,5 @@
 config:
+    gameId: redSpadeEn
     start: 10
     persistFlags: true
     
