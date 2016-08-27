@@ -77,15 +77,6 @@ Flags are used to show or hide links, with the help of an alternate link format:
             text: "Yes (lie)"
 ```
 
-### `{{#test}}{{/test}}`: Using flags in text
-
-You can also flavor your text with the flags, thanks to Mustache templating.
-
-```                 
-    monster:
-        text: A goblin appears! {{#sword}}It looks at your sword and hesitates...{{/sword}}
-```
-
 ### `disableRewindTo`: Prevent rewinding the story
 
 Use this on a step to prevent the user from rewinding the story, up to the specified step:
@@ -104,6 +95,15 @@ To unlock everything, use the special value `-`:
     theend: 
         disableRewindTo: -
         text: Congratulations, you win!
+```
+
+### Text formatting
+
+Markdown syntax is supported. You can also flavor the text with game flags, thanks to Mustache templating.
+
+```                 
+    monster:
+        text: "**A goblin appears!** {{#sword}}It looks at your sword and hesitates...{{/sword}}"
 ```
 
 ### Configuration keys

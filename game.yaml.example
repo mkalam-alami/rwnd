@@ -32,4 +32,4 @@ steps:
         
     victoryEnd:
         disableRewindTo: victoryEnd
-        text: The globlin flees and leaves a treasure behind him. You win!
+        text: The globlin flees and leaves a treasure behind him. *You win!*
