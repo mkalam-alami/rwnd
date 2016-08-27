@@ -34,7 +34,7 @@ steps:
 2. Serve with your favorite web server (I like [http-server](https://www.npmjs.com/package/http-server) for development).
 3. Play!
 
-The whole thing is made to be hacked as you want, the code being quite short (<300 lines) and hopefully readable.
+The whole thing is made to be hacked as you want, the code being quite short and hopefully readable.
 
 ## Advanced story features
 
@@ -75,6 +75,25 @@ Flags are used to show or hide links, with the help of an alternate link format:
           pnj_lie:
             ifNotFlag: sword
             text: "Yes (lie)"
+```
+
+### `continue`: Proceed immediately to the next step
+
+A step with this keyword jumps directly to the specified step. This can be useful when merging several story branches.
+
+N.B. If you set the `continue` attribute, all other attributes (except `text`) are ignored.
+
+``` 
+    abranch:
+        text: You grab the apple.
+        continue: eat
+    bbranch:
+        text: You grab the orange.
+        continue: eat
+    eat:
+        text: You eat it.
+        links:
+            [...]
 ```
 
 ### `disableRewindTo`: Prevent rewinding the story
