@@ -22,15 +22,6 @@ p {
     padding-bottom: 5px;
 }
 
-a {
-    text-decoration: none;
-    color: #012;
-}
-
-a:hover {
-    color: #356;
-}
-
 #rwnd-container {
     background-color: #DCA;
     margin: auto;
@@ -51,6 +42,22 @@ a:hover {
     font-weight: bold;
     margin: 10px;
     padding-bottom: 20px;
+}
+
+.rwnd-link {
+    text-decoration: none;
+    color: #012;
+}
+.rwnd-link:hover {
+    color: #356;
+}
+
+.rwnd-link-disabled {
+    color: #A96;
+    cursor: not-allowed;
+}
+.rwnd-link-disabled:hover {
+    color: #A96;
 }
 
 .rwnd-hidden {

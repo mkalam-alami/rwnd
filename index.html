@@ -13,11 +13,16 @@
 </div>
 
 <script id="rwnd-template" type="text/template">
-<div id="{{elId}}" class="rwnd-step {{#animate}}rwnd-hidden{{/animate}}">
+<div id="{{elId}}" class="rwnd-step {{#options.animate}}rwnd-hidden{{/options.animate}}">
     <div class="rwnd-text">{{{text}}}</div>
     <div class="rwnd-links">
     {{#links}}
-        <a id="{{linkElId}}" href="#" data-rwnd-state="{{stateId}}" data-rwnd-link="{{linkId}}">[ {{{linkText}}} ]</a>
+        {{^options.linksDisabled}}
+        <a id="{{linkElId}}" class="rwnd-link" href="#" data-rwnd-state="{{stateId}}" data-rwnd-link="{{linkId}}">[ {{{linkText}}} ]</a>
+        {{/options.linksDisabled}}
+        {{#options.linksDisabled}}
+        <span class="rwnd-link rwnd-link-disabled">[ {{{linkText}}} ]</a> 
+        {{/options.linksDisabled}}
     {{/links}}
     </div>
 </div>

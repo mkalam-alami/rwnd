@@ -31,4 +31,5 @@ steps:
         text: "You came back to where you came from: the end."
         
     victoryEnd:
+        disableRewindTo: victoryEnd
         text: The globlin flees and leaves a treasure behind him. You win!

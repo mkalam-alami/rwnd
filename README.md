@@ -86,6 +86,31 @@ You can also flavor your text with the flags, thanks to Mustache templating.
         text: A goblin appears! {{#sword}}It looks at your sword and hesitates...{{/sword}}
 ```
 
+### `disableRewindTo`: Prevent rewinding the story
+
+Use this on a step to prevent the user from rewinding the story, up to the specified step:
+
+``` 
+    checkpoint:
+        disableRewindTo: checkpoint
+        text: You finally slained the dragon!
+        link: 
+            quest2: Next quest
+```
+
+To unlock everything, use the special value `-`:
+
+``` 
+    theend: 
+        disableRewindTo: -
+        text: Congratulations, you win!
+```
+
+### Configuration keys
+
+* `start`: Mandatory. Sets the initial step.
+* `persistFlags`: Allows to persist flags even if you rewind in the story. Unusual, but can lead to interesting gameplay (defaults to false).
+
 ## API
 
 ### `rwnd.loadFile(url, targetDomId, templateDomId[, callback])`
