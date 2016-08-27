@@ -19,8 +19,8 @@ steps:
             Le jeune employé, rongé par l'ennui en cette fin de soirée, sourit en me voyant. Je me présente :
             « Bonsoir cher ami. Je suis attendu sous le nom de... »
         links:
-            21: Red Club &clubs;
-            22: Black Heart &hearts;
+            21: Red Club
+            22: Black Heart
             23:
                 text: Je ne me souviens plus
                 ifNotFlag: boris
@@ -45,7 +45,7 @@ steps:
         text: |
             L'employé me tourne le dos pour parcourir sa liste, puis se retourve vers moi d'un air désolé. 
             « Veuillez m'excuser, mais je ne trouve pas votre nom... »
-            « Vous êtes sûr ? Vous ne trouvez pas {{#heart}}Black Heart &hearts;{{/heart}}{{^heart}}Red Club &clubs;{{/heart}} ? »
+            « Vous êtes sûr ? Vous ne trouvez pas {{#heart}}Black Heart{{/heart}}{{^heart}}Red Club{{/heart}} ? »
             « Je suis désolé M'sieur, votre nom n'est pas ici. »
             Simple contretemps.
         links:

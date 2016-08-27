@@ -9,7 +9,7 @@ steps:
 
     10:
         text: |
-            I reach the entrance of the building. Chatter and clinking glass can be heard from inside.
+            I reach the entrance of the building. Chatter and glass clinkings can be heard from inside.
             A receptionist stands by the door.
         links:
             20: Present myself
@@ -19,8 +19,8 @@ steps:
             The young employee, filled with boredom at this time of the evening, notices me and smiles. I introduce myself:
             « Good evening my friend! I'm invited under the name... »
         links:
-            21: Red Club &clubs;
-            22: Black Heart &hearts;
+            21: Red Club
+            22: Black Heart
             23:
                 text: I actually don't remember
                 ifNotFlag: boris
@@ -45,16 +45,16 @@ steps:
         text: |
             The employee turns away to go through his list, then turns back with a saddened face.
             « I am very sorry Sir, but I can't find your name... »
-            « Are you sure? You looked for {{#heart}}Black Heart &hearts;{{/heart}}{{^heart}}Red Club &clubs;{{/heart}}, right? »
+            « Are you sure? You looked for {{#heart}}Black Heart{{/heart}}{{^heart}}Red Club{{/heart}}, right? »
             « Again I am sorry, but your name's not on that list. »
             Just a little mishap.
         links:
             40: Get the old pocket watch out
     
     40:
-            « See that ancient watch? Behind that outdated technology actually lies marvelous powers. »
         text: |
-            Le receptionist seems amused.
+            « See that ancient watch? Behind that outdated technology actually lies marvelous powers. »
+            The receptionist seems amused.
             « What kind of powers? »
             « This device allows me to travel through time. And therefore to gain access to unlimited knowledge! »
             « Uh, I don't see the link between... time travel and... knowledge? »
@@ -110,8 +110,8 @@ steps:
             
     70: 
         text: |
-            The employee turns away to go through his list, then comes back to me and makes a quick bow.
-            « I wish you a warm welcome, Sir Rosling. It's a pleasure to have you with us tonight. »
+            The employee turns away to go through his list, then comes back to me to make a quick bow.
+            « I wish you a warm welcome, Sir Rosing. It's a pleasure to have you with us tonight. »
         links:
             100: Enter the building
             
