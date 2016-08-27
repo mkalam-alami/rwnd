@@ -5,22 +5,42 @@ config:
 steps: 
     10:
         text: |
-            *J'approche du bâtiment. Des bruits de conversations et de vaisselle s'échappent de l'entrée.*
-            *Un réceptionniste se tient devant la porte.*
+            J'approche du bâtiment. Des bruits de conversations et de vaisselle s'échappent de l'entrée.
+            Un réceptionniste se tient devant la porte.
         links:
-            20: Se présenter au réceptionniste
+            20: Se présenter
        
     20:
         text: « Bonsoir cher ami. Je suis attendu sous le nom de... »
         links:
-            30: « ...Black Diamond. »
-            40: Je ne me souviens plus
-            
+            21: « Black Diamond. »
+            22: « Black Heart. »
+            23: « Je ne me souviens plus. »
+    21:
+        removeFlag: heart
+        setFlag: diamond
+        continue: 30
+    22:
+        removeFlag: diamond
+        setFlag: heart
+        continue: 30
+    
+    23:
+        text: |
+            « Je suis désolé Monsieur, il me faut un nom pour vous laisser entrer. »
+            Simple contretemps.
+        links:
+            40: Sortir la vieille montre à gousset
+        
     30:
         text: |
-            Je redresse ma veste pendant que l'employé, resté silencieux, parcourt d'un air neutre sa liste d'invités.
-            « ...Black Diamond. »
-    
+            Je redresse ma veste pendant que l'employé parcourt sa liste d'invités. Il finit par relever la tête d'un air désolé. 
+            « Veuillez m'excuser, mais je ne trouve pas votre nom... »
+            « *Vous êtes sûr ? Vous ne trouvez pas Black {{#diamond}}Diamond{{/diamond}}{{#heart}}Heart{{/heart}}?* »
+            « Je suis désolé Monsieur, votre nom n'est pas ici. »
+            Simple contretemps.
+        links:
+            40: Sortir la vieille montre à gousset
     
     40:
         text: xxx
