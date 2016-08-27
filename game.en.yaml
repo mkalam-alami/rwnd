@@ -1,0 +1,7 @@
+config:
+    start: 10
+    persistFlags: true
+    
+steps: 
+    10:
+        text: "*TODO*"

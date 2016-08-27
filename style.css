@@ -51,7 +51,6 @@ a:hover {
     margin: auto;
     max-width: 900px;
     padding-top: 5px;
-    text-align: right;
     color: #151520;
 }
 #footer a {
@@ -61,10 +60,20 @@ a:hover {
 #footer a:hover {
     color: black;
 }
+#footer img {
+    border-left: 1px solid #151520;
+    border-bottom: 1px solid #151520;
+    margin-right: 5px;
+}
+
+#footer .pull-right {
+    float: right;
+    text-align: right;
+}
 
 .rwnd-step {
     opacity: 1.0;
-    transition: 0.5s;
+    transition: 1.0s;
 }
 
 .rwnd-links {
