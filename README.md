@@ -81,8 +81,6 @@ Flags are used to show or hide links, with the help of an alternate link format:
 
 A step with this keyword jumps directly to the specified step. This can be useful when merging several story branches.
 
-N.B. If you set the `continue` attribute, all other attributes (except `text`) are ignored.
-
 ``` 
     abranch:
         text: You grab the apple.
