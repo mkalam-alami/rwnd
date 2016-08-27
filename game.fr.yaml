@@ -3,6 +3,9 @@ config:
     persistFlags: true
     
 steps: 
+
+# First scene
+
     10:
         text: |
             J'approche du bâtiment. Des bruits de conversations et de vaisselle s'échappent de l'entrée.
@@ -12,12 +15,17 @@ steps:
        
     20:
         text: |
-            L'employé, rongé par l'ennui en cette fin de soirée, sourit en me voyant arriver. Je me présente :
+            Le jeune employé, rongé par l'ennui en cette fin de soirée, sourit en me voyant. Je me présente :
             « Bonsoir cher ami. Je suis attendu sous le nom de... »
         links:
-            21: « Red Club &clubs; »
-            22: « Black Heart &hearts; »
-            23: « Je ne me souviens plus. »
+            21: Red Club &clubs;
+            22: Black Heart &hearts;
+            23:
+                text: Je ne me souviens plus
+                ifNotFlag: boris
+            70:
+                text: Boris Rosing
+                ifFlag: boris
     21:
         removeFlag: heart
         continue: 30
@@ -34,7 +42,7 @@ steps:
         
     30:
         text: |
-            Je redresse ma veste pendant que l'employé parcourt sa liste d'invités. Il finit par relever la tête d'un air désolé. 
+            L'employé me tourne le dos pour parcourir sa liste, puis se retourve vers moi d'un air désolé. 
             « Veuillez m'excuser, mais je ne trouve pas votre nom... »
             « Vous êtes sûr ? Vous ne trouvez pas {{#heart}}Black Heart &hearts;{{/heart}}{{^heart}}Red Club &clubs;{{/heart}} ? »
             « Je suis désolé M'sieur, votre nom n'est pas ici. »
@@ -46,10 +54,9 @@ steps:
         text: |
             « Vous voyez cette ancienne montre ? Derrière cette technologie dépassée se cache une magie incroyable. »
             Le réceptionniste paraît amusé. « Quel genre de pouvoir ? »
-            « Cet appareil me permet en fait de remonter le temps. Et par conséquent à un savoir infini. »
-            « Euh, je ne vois pas le lien entre... remonter le temps et... le savoir infini ? »
-            « Peu importe, voyez plutôt : je vais deviner ce que vous avez dans votre poche gauche. »
-            « Haha, faites-donc » lança-t-il, un sourire en coin.
+            « Cet appareil me permet de remonter le temps. Et par conséquent d'accéder à un savoir infini. »
+            « Euh, quel lien y a-t-il entre... remonter le temps et... le savoir infini ? »
+            « Peu importe, voyez plutôt : je vais deviner ce que vous avez dans votre poche intérieure gauche. »
         links:
             50: Faire mine de se concentrer
             51: Murmurer des incantations
@@ -59,7 +66,54 @@ steps:
     51: 
         disableRewindTo: 51
         text: |
-            « Alors ? Qu'est-ce  » fait l'employé.
+            L'emplyé me targue, un sourire en coin :
+            « Alors ? Qu'est-ce que j'ai dans ma veste ? »
         links:
-            52: Un mouchoir
-            53: Un stylo
+            51bis: J'ai trouvé !
+    51bis: 
+        text: « Il s'agit...  »
+        links:
+            52: D'un mouchoir
+            53: D'un stylo
+            54: D'une clef de voiture
+            60:
+                ifFlag: 100dollars
+                text: D'un pourboire
+                
+    52:
+        continue: 55
+    53:
+        continue: 55
+    54:
+        continue: 55
+    55:
+        setFlag: 100dollars
+        text: |
+            « Haha bien essayé ! »
+            « Dommage, » fais-je avec humilité. « C'était quoi ? »
+            « Vous ne valez pas grand-chose comme magicien ! C'était un pourboire de cent dollars », lance-t-il fièrement.
+            « C'est tout ce que voulais savoir... »
+            Sous son regard perplexe, je lève lentement ma montre à gousset, et me concentre...
+            
+    60:
+        setFlag: boris
+        disableRewindTo: '-'
+        text: |
+            Je sors mon portefeuille de ma poche arrière, puis d'un geste théâtral, j'en dégaîne un billet de cent dollars.
+            
+            Le réceptionniste fait les grands yeux, et se retourne le temps de vérifier sa poche. J'en profite pour le contourner et m'approcher de la liste des invités. J'ai tout juste le temps de lire un nom : Boris Rosing.
+            
+            « Vous avez bien failli m'av— eh qu'est-ce que vous faites ? »
+            Je me concentre à nouveau.
+            
+    70: 
+        text: |
+            L'employé me tourne le dos pour parcourir sa liste, puis se retourve vers moi et fait une petite courbette. 
+            « Je vous souhaite la bienvenue, Monsieur Rosing. C'est un plaisir de vous avoir parmi nous ce soir. »
+        links:
+            100: Entrer dans le bâtiment
+            
+# Second scene
+            
+    100:
+        text: TODO
