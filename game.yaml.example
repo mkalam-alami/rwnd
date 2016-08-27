@@ -1,4 +1,5 @@
 config:
+    gameId: example
     start: initialStep
     
 steps: 

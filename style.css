@@ -39,7 +39,6 @@ p {
 }
 
 .rwnd-links {
-    font-weight: bold;
     margin: 10px;
     padding-bottom: 20px;
 }
@@ -47,6 +46,7 @@ p {
 .rwnd-link {
     cursor: pointer;
     text-decoration: none;
+    font-weight: bold;
     color: #012;
 }
 .rwnd-link:hover {
@@ -63,4 +63,9 @@ p {
 
 .rwnd-hidden {
     opacity: 0.0 !important;
+}
+
+.rwnd-menu {
+    text-align: right;
+    font-size: 0.8rem;
 }

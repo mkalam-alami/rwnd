@@ -110,7 +110,7 @@ To unlock everything, use the special value `-`:
 
 ``` 
     theend: 
-        disableRewindTo: -
+        disableRewindTo: "-"
         text: Congratulations, you win!
 ```
 
@@ -126,19 +126,22 @@ Markdown syntax is supported. You can also flavor the text with game flags, than
 ### Configuration keys
 
 * `start`: Mandatory. Sets the initial step.
+* `gameId`: Recommended. If set, the game will auto-save using that ID.
 * `persistFlags`: Allows to persist flags even if you rewind in the story. Unusual, but can lead to interesting gameplay (defaults to false).
 
 ## API
 
-### `rwnd.loadFile(url, targetDomId, templateDomId[, callback])`
+### `rwnd.loadFile(url[, callback])`
 
 * `url`: URL to either your YAML or JSON story.
-* `targetDomId`: ID of the DOM element where the story will be displayed
-* `templateDomId`: ID of a &lt;script> element containing the step template (Mustache syntax), see `index.html` for an example. 
 * `callback`: Optional callback to be called when the game has finished loading. The callback gets the `game` as a parameter (its API is not documented, see the sources), or false if the URL yields a 404.
 
-If the story doesn't pass validation, loading the game will throw errors - with hopefully useful messages.
+To run properly the DOM must contain 3 elements with specific IDs, see `index.html` for examples:
 
-### `rwnd.loadFile(data, targetDomId, templateDomId)`
+* `rwnd-container`: ID of the DOM element where the story will be displayed
+* `rwnd-step-template`: ID of a &lt;script> element containing the step template (Mustache syntax). 
+* `rwnd-menu-template`: ID of a &lt;script> element containing the menu links template. 
+
+### `rwnd.loadFile(data)`
 
 Same as the previous call, except you're passing the YAML/JSON story directly (string or JSON object). The game will be loaded synchronously and return the `game`.
