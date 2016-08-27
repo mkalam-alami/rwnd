@@ -142,6 +142,6 @@ To run properly the DOM must contain 3 elements with specific IDs, see `index.ht
 * `rwnd-step-template`: ID of a &lt;script> element containing the step template (Mustache syntax). 
 * `rwnd-menu-template`: ID of a &lt;script> element containing the menu links template. 
 
-### `rwnd.loadFile(data)`
+### `rwnd.load(data)`
 
 Same as the previous call, except you're passing the YAML/JSON story directly (string or JSON object). The game will be loaded synchronously and return the `game`.
