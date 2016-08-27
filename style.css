@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: #445;
+    background: url('img/bg.png') #334;
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     padding: 20px;
     font-size: 15px;
@@ -13,17 +13,30 @@ body {
 h1 {
     margin: auto;
     max-width: 900px;
-    color: #DCA;
+    color: #bd922c;
     padding-bottom: 10px;
-    font-size: 2rem;
+    font-size: 3rem;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+}
+
+h1 .red {
+    color: #f10007;
 }
 
 p {
     padding-bottom: 5px;
 }
 
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
 #rwnd-container {
-    background-color: #DCA;
+    border-top: 2px solid #bd922c;
+    background-color: #fccb64;
     margin: auto;
     max-width: 900px;
     box-sizing: border-box;
@@ -31,6 +44,22 @@ p {
     color: #012;
     font-size: 1.1rem;
     line-height: 1.5rem;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+}
+
+#footer {
+    margin: auto;
+    max-width: 900px;
+    padding-top: 5px;
+    text-align: right;
+    color: #151520;
+}
+#footer a {
+    color: #151520;
+    font-weight: bold;
+}
+#footer a:hover {
+    color: black;
 }
 
 .rwnd-step {
@@ -50,7 +79,7 @@ p {
     color: #012;
 }
 .rwnd-link:hover {
-    color: #356;
+    color: #f10007;
 }
 
 .rwnd-link-disabled {
