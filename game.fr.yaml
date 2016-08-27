@@ -11,17 +11,17 @@ steps:
             20: Se présenter
        
     20:
-        text: « Bonsoir cher ami. Je suis attendu sous le nom de... »
+        text: |
+            L'employé, rongé par l'ennui en cette fin de soirée, sourit en me voyant arriver. Je me présente :
+            « Bonsoir cher ami. Je suis attendu sous le nom de... »
         links:
-            21: « Black Diamond. »
-            22: « Black Heart. »
+            21: « Red Club &clubs; »
+            22: « Black Heart &hearts; »
             23: « Je ne me souviens plus. »
     21:
         removeFlag: heart
-        setFlag: diamond
         continue: 30
     22:
-        removeFlag: diamond
         setFlag: heart
         continue: 30
     
@@ -36,11 +36,30 @@ steps:
         text: |
             Je redresse ma veste pendant que l'employé parcourt sa liste d'invités. Il finit par relever la tête d'un air désolé. 
             « Veuillez m'excuser, mais je ne trouve pas votre nom... »
-            « *Vous êtes sûr ? Vous ne trouvez pas Black {{#diamond}}Diamond{{/diamond}}{{#heart}}Heart{{/heart}}?* »
-            « Je suis désolé Monsieur, votre nom n'est pas ici. »
+            « Vous êtes sûr ? Vous ne trouvez pas {{#heart}}Black Heart &hearts;{{/heart}}{{^heart}}Red Club &clubs;{{/heart}} ? »
+            « Je suis désolé M'sieur, votre nom n'est pas ici. »
             Simple contretemps.
         links:
             40: Sortir la vieille montre à gousset
     
     40:
-        text: xxx
+        text: |
+            « Vous voyez cette ancienne montre ? Derrière cette technologie dépassée se cache une magie incroyable. »
+            Le réceptionniste paraît amusé. « Quel genre de pouvoir ? »
+            « Cet appareil me permet en fait de remonter le temps. Et par conséquent à un savoir infini. »
+            « Euh, je ne vois pas le lien entre... remonter le temps et... le savoir infini ? »
+            « Peu importe, voyez plutôt : je vais deviner ce que vous avez dans votre poche gauche. »
+            « Haha, faites-donc » lança-t-il, un sourire en coin.
+        links:
+            50: Faire mine de se concentrer
+            51: Murmurer des incantations
+            
+    50:
+        continue: 51
+    51: 
+        disableRewindTo: 51
+        text: |
+            « Alors ? Qu'est-ce  » fait l'employé.
+        links:
+            52: Un mouchoir
+            53: Un stylo
