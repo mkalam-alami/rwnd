@@ -105,5 +105,9 @@ a:hover {
 
 .rwnd-menu {
     text-align: right;
+}
+
+.rwnd-menu span {
     font-size: 0.8rem;
+    color: #bd922c;
 }

@@ -67,7 +67,7 @@ steps:
     51: 
         disableRewindTo: 51
         text: |
-            L'emplyé me targue, un sourire en coin :
+            L'employé me nargue, un sourire en coin :
             « Alors ? Qu'est-ce que j'ai dans ma veste ? »
         links:
             51bis: J'ai trouvé !
@@ -109,7 +109,7 @@ steps:
             
     70: 
         text: |
-            L'employé me tourne le dos pour parcourir sa liste, puis se retourve vers moi et fait une petite courbette. 
+            L'employé me tourne le dos pour parcourir sa liste, puis se retourne vers moi et fait une petite courbette. 
             « Je vous souhaite la bienvenue, Monsieur Rosing. C'est un plaisir de vous avoir parmi nous ce soir. »
         links:
             100: Entrer dans le bâtiment
@@ -117,4 +117,4 @@ steps:
 # Second scene
             
     100:
-        text: TODO
+        text: (TODO) A suivre...

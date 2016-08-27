@@ -4,5 +4,118 @@ config:
     persistFlags: true
     
 steps: 
+
+# First scene
+
     10:
-        text: "*TODO*"
+        text: |
+            I reach the entrance of the building. Chatter and clinking glass can be heard from inside.
+            A receptionist stands by the door.
+        links:
+            20: Present myself
+       
+    20:
+        text: |
+            The young employee, filled with boredom at this time of the evening, notices me and smiles. I introduce myself:
+            « Good evening my friend! I'm invited under the name... »
+        links:
+            21: Red Club &clubs;
+            22: Black Heart &hearts;
+            23:
+                text: I actually don't remember
+                ifNotFlag: boris
+            70:
+                text: Boris Rosing
+                ifFlag: boris
+    21:
+        removeFlag: heart
+        continue: 30
+    22:
+        setFlag: heart
+        continue: 30
+    
+    23:
+        text: |
+            « I'm sorry Sir, I need a name to let you pass. »
+            Just a little mishap.
+        links:
+            40: Get the old pocket watch out
+        
+    30:
+        text: |
+            The employee turns away to go through his list, then turns back with a saddened face.
+            « I am very sorry Sir, but I can't find your name... »
+            « Are you sure? You looked for {{#heart}}Black Heart &hearts;{{/heart}}{{^heart}}Red Club &clubs;{{/heart}}, right? »
+            « Again I am sorry, but your name's not on that list. »
+            Just a little mishap.
+        links:
+            40: Get the old pocket watch out
+    
+    40:
+            « See that ancient watch? Behind that outdated technology actually lies marvelous powers. »
+        text: |
+            Le receptionist seems amused.
+            « What kind of powers? »
+            « This device allows me to travel through time. And therefore to gain access to unlimited knowledge! »
+            « Uh, I don't see the link between... time travel and... knowledge? »
+            « Doesn't matter— my point is, I'm about to find out what the inside pocket of your jacket contains. »
+        links:
+            50: Pretend to concentrate
+            51: Whisper incantations
+            
+    50:
+        continue: 51
+    51: 
+        disableRewindTo: 51
+        text: |
+            The employee laughs:
+            « Go ahead, what do I have in my jacket? »
+        links:
+            51bis: I see!
+    51bis: 
+        text: « What you have is...  »
+        links:
+            52: A paper tissue
+            53: A black pen
+            54: A car key
+            60:
+                ifFlag: 100dollars
+                text: A dollar bill
+                
+    52:
+        continue: 55
+    53:
+        continue: 55
+    54:
+        continue: 55
+    55:
+        setFlag: 100dollars
+        text: |
+            « Haha well tried! »
+            « What a shame, I guess I failed, » I answer with humility. « What was it? »
+            « I've seen better magicians! It actually was a hundred-dollar tip », he says proudly.
+            « That's all I needed to know... »
+            Before his puzzled look, I slowly raise my pocket watch in front of me, and close my eyes...
+            
+    60:
+        setFlag: boris
+        disableRewindTo: '-'
+        text: |
+            I grab a wallet from my back pocket, then, in a theatrical gesture, make a hundred dollar bill come out of it.
+            
+            The receptionnist's eyes widen for a split second. He then turns around to check his own wallet. I take advantage of his distraction to quickly get around him and reach the guest list. I barely have the time to read one name: Boris Rosing.
+            
+            « You almost got me her— hey what are you doing? »
+            I concentrate once again.
+            
+    70: 
+        text: |
+            The employee turns away to go through his list, then comes back to me and makes a quick bow.
+            « I wish you a warm welcome, Sir Rosling. It's a pleasure to have you with us tonight. »
+        links:
+            100: Enter the building
+            
+# Second scene
+            
+    100:
+        text: (TODO) To be continued...
