@@ -45,6 +45,7 @@ p {
 }
 
 .rwnd-link {
+    cursor: pointer;
     text-decoration: none;
     color: #012;
 }
