@@ -114,6 +114,18 @@ To unlock everything, use the special value `-`:
         text: Congratulations, you win!
 ```
 
+### `longLinks`: Displays one link per line
+
+Useful for long or numerous links that look bad when crammed into one line.
+
+``` 
+    quote:
+        text: What is your favorite quote?
+        link: 
+            quote1: I am so clever that sometimes I don't understand a single word of what I am saying. - Oscar Wilde
+            quote2: I have not failed. I've just found 10,000 ways that won't work. ― Thomas Edison
+```
+
 ### Text formatting
 
 Markdown syntax is supported. You can also flavor the text with game flags, thanks to Mustache templating.
@@ -142,6 +154,6 @@ To run properly the DOM must contain 3 elements with specific IDs, see `index.ht
 * `rwnd-step-template`: ID of a &lt;script> element containing the step template (Mustache syntax). 
 * `rwnd-menu-template`: ID of a &lt;script> element containing the menu links template. 
 
-### `rwnd.loadFile(data)`
+### `rwnd.load(data)`
 
 Same as the previous call, except you're passing the YAML/JSON story directly (string or JSON object). The game will be loaded synchronously and return the `game`.

@@ -99,6 +99,10 @@ a:hover {
     color: #A96;
 }
 
+.rwnd-link-long {
+    display: block;
+}
+
 .rwnd-hidden {
     opacity: 0.0 !important;
 }
