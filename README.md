@@ -114,6 +114,18 @@ To unlock everything, use the special value `-`:
         text: Congratulations, you win!
 ```
 
+### `longLinks`: Displays one link per line
+
+Useful for long or numerous links that look bad when crammed into one line.
+
+``` 
+    quote:
+        text: What is your favorite quote?
+        link: 
+            quote1: I am so clever that sometimes I don't understand a single word of what I am saying. - Oscar Wilde
+            quote2: I have not failed. I've just found 10,000 ways that won't work. ― Thomas Edison
+```
+
 ### Text formatting
 
 Markdown syntax is supported. You can also flavor the text with game flags, thanks to Mustache templating.
