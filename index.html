@@ -18,11 +18,11 @@
     <div class="rwnd-links">
     {{#links}}
         {{^options.linksDisabled}}
-        <span id="{{linkElId}}" class="rwnd-link  {{#longLinks}}rwnd-link-long{{/longLinks}}"
+        <span id="{{linkElId}}" class="rwnd-link{{#longLinks}} rwnd-link-long{{/longLinks}}"
             data-rwnd-state="{{stateId}}" data-rwnd-link="{{linkId}}">[ {{{linkText}}} ]</span>
         {{/options.linksDisabled}}
         {{#options.linksDisabled}}
-        <span class="rwnd-link rwnd-link-disabled {{#longLinks}}rwnd-link-long{{/longLinks}}">[ {{{linkText}}} ]</a> 
+        <span class="rwnd-link rwnd-link-disabled{{#longLinks}} rwnd-link-long{{/longLinks}}">[ {{{linkText}}} ]</a> 
         {{/options.linksDisabled}}
     {{/links}}
     </div>
