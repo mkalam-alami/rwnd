@@ -94,7 +94,7 @@ steps:
             « Dommage, » fais-je avec humilité. « C'était quoi ? »
             « Vous ne valez pas grand-chose comme magicien ! C'était un pourboire de cent dollars », lance-t-il fièrement.
             « C'est tout ce que voulais savoir... »
-            Sous son regard perplexe, je lève lentement ma montre à gousset, et me concentre...
+            Sous son regard perplexe, je lève lentement ma montre à gousset, et me concentre sur un point dans le passé...
             
     60:
         setFlag: boris
@@ -113,8 +113,246 @@ steps:
             « Je vous souhaite la bienvenue, Monsieur Rosing. C'est un plaisir de vous avoir parmi nous ce soir. »
         links:
             100: Entrer dans le bâtiment
+            300:
+                ifFlag: windowsUnlocked
+                text: Grimper par la fenêtre du salon
+            
+            
             
 # Second scene
             
     100:
-        text: (TODO) A suivre...
+        text: |
+            J'entre dans une grande salle luxueusment décorée, où les hommes en costume et les femmes en robe de soirée discutent par petits groupes, un verre de champagne à la main. Un buffet appétissant occupe tout un mur de la pièce.
+            
+            Il me faut un instant pour repérer l'escalier au fond de la salle, en partie masqué par un lustre imposant. Le bureau doit être à l'étage.
+        links:
+            110: Monter l'escalier
+            105: Examiner les invités
+    
+    105:
+        removeFlag: agentFollowedMe
+        text: Je repère parmi la foule ce qui semble être un agent de sécurité. En faisant attention, je devrais pouvoir atteindre l'escalier sans l'attirer.
+        links:
+            120: Monter l'escalier
+
+    110:
+        removeFlag: hasKey
+        setFlag: agentFollowedMe
+        text: |
+            Sans que les invités ne me prêtent attention, je me faufile entre les invités jusqu'à l'escalier du fond.
+            
+            Une fois parvenu à l'étage, je jette un regard sous la rembarde : quelqu'un se trouve en bas de l'escalier. J'ai l'impression d'avoir été suivi.
+        links: 
+            130: Examiner l'étage
+            115: Redescendre confronter l'intrus
+    
+    115:
+        text: |
+            De peur d'avoir attiré l'attention, je redescends l'air de rien l'escalier... Pour me trouver face à face avec un homme froid aux épaules carrées. Je lui souris :
+            « Veuillez m'excuser, je cherchais les toilettes et— »
+            Avec une vitesse surprenante, le garde me plaque contre le mur, une main sur la bouche. Une douleur déchirante traverse mon ventre, et je m'apprête à perdre connaissance...
+            
+    120:
+        removeFlag: hasKey
+        text: |
+            Sans que personne ne semble me prêter attention, je me faufile entre les invités jusqu'à l'escalier du fond.
+            Une fois parvenu à l'étage, je jette un regard sous la rembarde : le garde ne m'a pas suivi.
+        links:
+            130: Examiner l'étage
+            
+    140:
+        text: "Je retourne dans le couloir, puis m'arrête subitement : quelqu'un vient de monter l'escalier. Il me jauge d'un regard froid, puis s'approche lentement vers moi."
+        links:
+            145: Fuir
+            146: Combattre
+            
+    145:
+        text: |
+            Je m'enferme dans la pièce la plus proche, et me retrouve dans l'obscurité. J'entends des voix à l'extérieur, je vois par-dessous la porte une lumière s'échapper et des formes s'agiter.
+            « Je crois que je suis fichu, » dis-je à moi-même.
+            Quelqu'un défonce bruyamment la porte d'un coup de pied et trois agents m'encerclent, armés jusqu'aux dents. Ne restons pas pour la suite.
+    
+    146:
+        text: |
+            Je sors un couteau de ma veste. Simultanément, l'agent dégaine un revolver, me met en joue et...
+            D'instinct, je ferme les yeux et me concentre.
+    
+    130:
+        text: Le couloir part à gauche et à droite, avec pas moins de trois portes de chaque côté. Je n'ai pas pu avoir les plans à l'avance, il va falloir chercher le bureau au hasard.
+        links:
+            salle11: 1ère salle à gauche (fermée, une voix en sort)
+            salle12: 2ème salle à gauche (fermée)
+            salle13: 3ème salle à gauche (entrouverte, allumée)
+            salle21: 1ère salle à droite (fermée, une voix en sort)
+            salle22: 2ème salle à droite (fermée, a une porte double)
+            salle23: 3ème porte à droite (fermée, un tapis est posé devant)
+
+    salle11:
+        text: J'entrouvre avec précaution la porte. Une radio est allumée à l'intérieur, mais personne ne s'y trouve. Une chambre de serviteur il semblerait.
+        links:
+            130:
+                ifNotFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            140:
+                ifFlag: agentFollowedMe
+                text: Retourner dans le couloir
+    
+    salle12:
+        text: La porte s'ouvre sur un espace de rangement. Je n'y trouve rien d'intéressant.
+        links:
+            130:
+                ifNotFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            140:
+                ifFlag: agentFollowedMe
+                text: Retourner dans le couloir
+                            
+    salle13:
+        text: Je m'approche et glisse mon regard à travers l'interstice, pour y repérer trois personnes armées, assises autour d'une table. La bonne nouvelle, c'est qu'il ne s'agit pas de la bonne pièce.
+        links:
+            130:
+                ifNotFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            140:
+                ifFlag: agentFollowedMe
+                text: Retourner dans le couloir
+                
+    salle21:
+        text: La porte est fermée à clef. En essayant de l'ouvrir, le bruit de la porte a semblé résonner à l'intérieur.
+        links:
+            salle21b: Essayer de la crocheter
+            salle21c:
+                ifFlag: hasKey
+                text: Utiliser la clef
+            130:
+                ifNotFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            140:
+                ifFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            
+    salle21b:
+        text: Je sors un crochet de ma veste et ouvre rapidement la serrure. Une salle de bains.
+        links:
+            130:
+                ifNotFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            140:
+                ifFlag: agentFollowedMe
+                text: Retourner dans le couloir
+        
+    salle21c:
+        text: La clef ne correspond pas.
+        links:
+            130:
+                ifNotFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            140:
+                ifFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            
+                
+    salle22:
+        setFlag: hasKey
+        text: J'entre dans un grand salon, avec un billard à l'intérieur. Quelqu'un a laissé des clefs sur une chaise, je ramasse en silence.
+        links:
+            130:
+                ifNotFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            140:
+                ifFlag: agentFollowedMe
+                text: Retourner dans le couloir
+                
+    salle23:
+        text: La porte est fermée à clef.
+        links:
+            salle23b: Regarder sous le tapis
+            salle23c: Essayer de la crocheter
+            200:
+                ifFlag: hasKey
+                text: Utiliser la clef
+            130:
+                ifNotFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            140:
+                ifFlag: agentFollowedMe
+                text: Retourner dans le couloir
+    
+    salle23b:
+        text: Rien sous le tapis.
+        links:
+            salle23c: Essayer de la crocheter
+            200:
+                ifFlag: hasKey
+                text: Utiliser la clef
+            130:
+                ifNotFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            140:
+                ifFlag: agentFollowedMe
+                text: Retourner dans le couloir
+    
+    salle23c:
+        text: Je sors un crochet de ma veste et tente d'ouvrir la serrure. Le modèle m'est inconnu... Il semble en fait que toute la porte a été faite sur mesure. Je vais devoir trouver un autre moyen d'entrer.
+        links:
+            salle23b: Regarder sous le tapis
+            200:
+                ifFlag: hasKey
+                text: Utiliser la clef
+            130:
+                ifNotFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            140:
+                ifFlag: agentFollowedMe
+                text: Retourner dans le couloir
+
+    200:
+        disableRewindTo: 200
+        text: |
+            La clef correspond.
+            
+            La porte s'ouvre sur une grande salle doucement éclairée, imprégnée d'une odeur de tabac. Des livres recouvrent les murs, et un imposant bureau décoré avec élégance se trouve au fond de la pièce. Il n'y a personne dans la salle. 
+        links:
+            210: Fouiller la salle
+            
+    210:
+        text: |
+            A peine commencè-je mes recherches qu'un bruissement me force à me retourner : une bibliothèque s'est écartée du mur, et un homme élancé se tient dans l'encadrement, un dossier à la main.
+            
+            Je reconnais cette fine moustache, les motifs excentriques de ce gilet. Il s'agit de *Red Spade*, un... ancien collègue.
+            
+            Il rompt le silence le premier d'un rire hautain :
+            
+            « Alors comme ça il t'ont envoyé ici ! Ils prennent mon business très au sérieux ! »
+            « C'est donc toi qui est derrière ce projet... Je ne te laisserai pas faire, Red. »
+            
+            Des gardes armés entrent dans la pièce.
+        links:
+            215: Chercher une sortie
+            216: Ne rien faire
+            
+    215: 
+        text: Je me retourne brièvement. La fenêtre est ouverte, mais la chute risque serait dangereuse à cette hauteur.
+        continue: 216
+    
+    216:
+        disableRewindTo: '-'
+        setFlag: windowsUnlocked
+        text: |
+            Tandis que les agents s'approchent de moi, Red Spade me montre son dossier :
+            
+            « C'est ça que tu cherchais n'est-ce pas ? Quel dommage, tu étais si près du but ! »
+            « Oh ne t'inquiète pas pour moi, » fais-je avec un sourire poli.
+            
+            Je devrais pouvoir revenir au bureau par un autre moyen, plus rapide. Peut-être une fenêtre ?
+
+# Third scene
+
+    300: 
+        text: |
+            Une fois trompée la vigilance du réceptionniste, je me mets à longer le mur extérieur dans l'obscurité.
+            Je repère la fenêtre du salon, délace mes chaussures, puis me mets à grimper à l'aide des reliefs du mur.
+            Je rejoins rapidement le bureau, dont la fenêtre est par chance toujours (...déjà ?) ouverte.
+            
+            TODO A suivre...
