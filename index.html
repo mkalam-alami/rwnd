@@ -49,6 +49,7 @@
 <script type="text/javascript" src="lib/showdown.min.js"></script>
 <script type="text/javascript" src="lib/rwnd.js"></script>
 <script type="text/javascript">
+
 var fileName = (window.location.href.indexOf('?en') != -1) ? 'game.en.yaml' : 'game.fr.yaml';
 rwnd.loadFile(fileName, function (game) {
     var linkCallback = game.view.callbacks['link'];
@@ -56,16 +57,35 @@ rwnd.loadFile(fileName, function (game) {
     game.view.setCallback('link', function(linkStateId, targetStepId) {
         if (targetStepId == 21) isHeart = false;
         if (targetStepId == 22) isHeart = true;
-        if (targetStepId == 420) {
-            // change game title on game end :-O
-            document.getElementById('game-title')
-                .innerHTML = isHeart ? '<span class="red">black heart</span> &hearts;' : '<span class="red">red clubs</span> &clubs;';
-            document.getElementsByTagName('title')[0]
-                .innerHTML = isHeart ? 'black heart &hearts;' : 'red clubs &clubs;';
+        if (targetStepId == 422) {
+            // evil ending
+            var i = 0, steps = document.getElementsByClassName('rwnd-step');
+            for (var i = 0; i < 10; i++) {
+                setTimeout(function() {
+                    for (var id in steps) {
+                        var step = steps[id];
+                        if (step.innerHTML) {
+                            step.textContent = step.textContent.slice(0,Math.floor(step.textContent.length * 4 / 5));
+                        }
+                    }
+                }, i * 200);
+            }
             
+            setTimeout(function() {
+                for (var id in steps) {
+                    var step = steps[id];
+                    if (step.parentElement)
+                        step.parentElement.removeChild(step);
+                }
+            }, 1500);
+            setTimeout(function() {
+                document.getElementById('game-title').innerHTML = isHeart ? '<span class="red">black heart</span> &hearts;' : '<span class="red">red clubs</span> &clubs;';
+                document.getElementsByTagName('title')[0].innerHTML = isHeart ? 'black heart &hearts;' : 'red clubs &clubs;';
+            }, 2500);
         }
-        
-        linkCallback.callback.apply(linkCallback.context, [linkStateId, targetStepId]);
+        else {
+            linkCallback.callback.apply(linkCallback.context, [linkStateId, targetStepId]);
+        }
     }, this);
 });
 

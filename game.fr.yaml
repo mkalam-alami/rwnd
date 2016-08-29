@@ -1,5 +1,5 @@
 config:
-    gameId: redSpadeFr 
+    gameId: redSpadeFr-v1
     start: 10
     persistFlags: true
     
@@ -8,6 +8,8 @@ steps:
 # First scene
 
     10:
+        #debug
+        setFlag: redFollowsMe
         text: |
             J'arrive face au manoir, caché par l'obscurité. Une lumière chaude s'échappe de l'entrée, accompagnée du bruit de conversations et de verres qui s'entrechoquent.
             Un réceptionniste se tient devant la porte.
@@ -17,6 +19,8 @@ steps:
                 text: S'approcher
      
     20:
+        #debug
+        setFlag: redShotMe
         text: |
             {{^redShotMe}}{{^redFollowsMe}}Le jeune employé, rongé par l'ennui en cette fin de soirée, sourit en me voyant. Je me présente avec enthousiasme :
             « Bonsoir cher ami ! Je suis attendu sous le nom de... »{{/redFollowsMe}}{{#redFollowsMe}}J'approche du manoir, mais le réceptionniste n'est autre que Red Spade. Il agite son arme en me narguant :
@@ -53,9 +57,9 @@ steps:
             
             Malheureusement, il est le plus rapide, et son revolver tire.
             
-            C'est étrange... L'espace d'un instant, tout en m'écroulant vers le sol, je remarque que son œil gauche paraît anormal... Amorphe... Aurait-il un œil de verre ? Je ne m'en étais jamais rendu compte jusqu'à maintenant, et pourtant je connais Red Spade depuis plus de dix ans.
+            C'est étrange... L'espace d'un instant, tout en m'écroulant vers le sol, je remarque que son œil gauche paraît anormal... Amorphe... Aurait-il un œil de verre ? Ce doit être nouveau, car depuis dix ans que je le connais, je n'ai aucun souvenir d'un faux œil.
             
-            Je suis maintenant allongé sur le dos, et une douleur sourde compresse ma poitrine. Je relève la tête vers mon torse et aperçois une corolle pourpre s'agrandir sur ma chemise. Ma vision se fait floue... Je tente une dernière fois de me concentrer.
+            Je suis maintenant allongé sur le dos, et une douleur sourde compresse ma poitrine. Je relève la tête vers mon torse et aperçois une tâche pourpre s'agrandir sur ma chemise. Ma vision se fait floue... Je tente une dernière fois de me concentrer.
     
     410:
         text: Je m'applique à faire un détour silencieux, profitant de l'angle mort laissé par l'œil de verre de Red. Je me retrouve bientôt derrière lui, mon couteau à la main, et remarque dans sa poche arrière la fameuse montre, dont la chaîne pend sur quelques centimètres.
@@ -64,7 +68,6 @@ steps:
             420: Neutraliser Red Spade
             
     420:
-        #disableRewindTo: 420
         text: |
             Dans un même mouvement, je lance la montre de Red hors de sa portée, et l'immobilise d'une clef de bras, le couteau sous sa gorge. Une fois passée la surprise, Red lâche d'une voix étranglée :
             « Joli coup, mais ce n'est pas fini ! »
@@ -74,14 +77,24 @@ steps:
             Quelques minutes plus tard, je tiens enfin en main l'objet de ma mission. Tout le nécessaire pour construire une arme capable d'arrêter le temps... Tant de pouvoir ne doit pas atterir entre de mauvaises mains.
             
             
-            Je m'approche de la cheminée et hésite un moment, sur le point de trahir mes ordres de mission. D'un geste brusque, je lance les documents au milieu des flammes. L'ancienne montre à gousset de Red la suit de peu, qui éclate immédiatement en une gerbe d'étincelles multicolores.
+            Je m'approche de la cheminée et hésite un moment, sur le point de trahir mes ordres de mission. D'un geste brusque, je lance les documents au milieu des flammes. L'ancienne montre à gousset de Red la suit de peu, et éclate immédiatement dans une gerbe d'étincelles multicolores.
+            
             Je saisis alors entre mes mains ma propre montre, dernier exemplaire d'une ancienne technologie longtemps perdue. Dois-je jeter ce pouvoir dans le feu ? Le détruire pour toujours ?
+        links:
+            421: Détruire la montre
+            422: La garder
+    
+    421:
+        disableRewindTo: 421
+        text: |
+            L'appareil disparaît à son tour dans les flammes, et je me sens tout à coup démuni.
             
-            
-            J'hésite un instant, puis un sourire en coin me saisit, et je me détourne des flammes.
-            
+            Démuni et peut-être... Curieux ? Intrigué ? Je réalise qu'à présent, chacun de mes choix va vraiment compter, et j'ai hâte de voir ce qui m'attend. Il est temps d'aller de l'avant.
             
             *FIN*
+    
+    422: 
+        text: (none)
             
     21:
         removeFlag: heart
@@ -178,7 +191,7 @@ steps:
             300:
                 ifFlag: windowsUnlocked
                 ifNotFlag: redFollowsMe
-                text: Grimper par la fenêtre du salon
+                text: Grimper par la fenêtre du bureau
             
             
             
@@ -402,7 +415,7 @@ steps:
         text: |
             La clef correspond.
             
-            La porte s'ouvre sur une grande salle doucement éclairée, imprégnée d'une odeur de tabac. Des livres recouvrent les murs, et un imposant bureau décoré avec élégance se trouve au fond de la pièce. Il n'y a personne dans la salle. 
+            La porte s'ouvre sur une grande salle doucement éclairée, imprégnée d'une odeur de tabac. Des livres recouvrent les murs ainsi qu'une petite cheminée. Un imposant bureau décoré avec élégance se trouve près de celle-ci. Il n'y a personne dans la salle. 
         links:
             210: Fouiller la salle
             

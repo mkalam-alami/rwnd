@@ -1,5 +1,5 @@
 config:
-    gameId: redSpadeEn
+    gameId: redSpadeEn-v1
     start: 10
     persistFlags: true
     
@@ -9,24 +9,89 @@ steps:
 
     10:
         text: |
-            I reach the entrance of the mansion. Chatter and glass clinkings can be heard from inside.
+            I reach the mansion, but remain far enough to stay hidden in the darkness. A warm light escapes the entrance, while chatter and glass clinkings can be heard.
             A receptionist stands by the door.
         links:
-            20: Present myself
-       
+            20:
+                ifNotFlag: redFollowsMe
+                text: Get closer
+     
     20:
         text: |
-            The young employee, filled with boredom at this time of the evening, notices me and smiles. I introduce myself:
-            « Good evening my friend! I'm invited under the name... »
+            {{^redShotMe}}{{^redFollowsMe}}The young employee, filled with boredom at this time of the evening, notices me and smiles. I introduce myself:
+            « Good evening my friend! I'm invited under the name... »{{/redFollowsMe}}{{#redFollowsMe}}I get closer to the mansion, and the receptionist is no one but Red Spade. He  jiggles his gun while taunting me:
+            « You played, and lost my dear friend. Soon, I will finish building by time bomb, and will freeze your whole country in time for a hundred years! And it will all be possible thanks to this. » He brandishes an old pocket watch, the perfect look-alike to mine.
+            « After being frozen in time, your civilization will be completely obsolete, and your ancient technologies will be of no help when I'll come and invade it!! »
+            He bursts in an unpleasant laugh.{{/redFollowsMe}}{{/redShotMe}}{{#redShotMe}}I take a deep breath: I'm still alive! I feel my chest to find the wound has disappeared. I give myself a few seconds to calm down and catch my breath.
+            
+            Red is still looking out from the mansion's entrance.{{/redShotMe}}
         links:
-            21: Red Club
-            22: Black Heart
+            21:
+                ifNotFlag: redFollowsMe
+                text: Red Club
+            22:
+                ifNotFlag: redFollowsMe
+                text: Black Heart
             23:
-                text: I actually don't remember
+                text: Je ne me souviens plus
                 ifNotFlag: boris
             70:
                 text: Boris Rosing
+                ifNotFlag: redFollowsMe
                 ifFlag: boris
+            400:
+                ifFlag: redFollowsMe
+                text: Throw myself at him
+            410:
+                ifFlag: redShotMe
+                text: Get around him, at his left side
+    
+    400:
+        setFlag: redShotMe
+        text: |
+            While listening to his speech, I slowly got closer to him. In a desperate effort, I pounce on him to disarm and ground him.
+            
+            Unfortunately, Red's is faster, and his revolver shoots.
+            
+            It's strange... For a moment, while during my fall to the groud, I notice how his left eye looks somehow... abnormal. Amorphous. A glass eye maybe? This must be new, since I knew him for ten years and never noticed a such thing.
+            
+            I am now laying on my back, and feel a dull pain in my chest. I tilt my head to see a red shape growing on my shirt. My vision gets blurry... I try one last time to focus on my watch.
+    
+    410:
+        text: I slowly make a detour to take advantage of the blind spot caused by Red's glass eye. I am soon standing behind him, my knife in hand. I spot in his back pocket the old watch, of which the chain hangs a little bit.
+            
+        links:
+            420: Neutralize Red Spade
+            
+    420:
+        text: |
+            In a fluid motion, I throw away Red's watch out of his reach, then grab him and lock his arm, a knife under his throat. Red manages to say hoarsely:
+            « Nice move, but it's not over yet! »
+            He uses his free arm to reach for his back pocket, probably to use his missing watch. His arrogant look suddenly fades away. I tighten my grip.
+            
+            
+            A few minutes later, I finally hold the goal of the mission. This file contains everything you need to build a mass weapon able to stop time... So much power cannot end on the wrong hands.
+            
+            
+            I get closer to the fireplace, and hesitate a moment, about to betray my mission orders. In an abrupt move, I throw the documents in the flames. Red's ancient watch quickly follows, bursting in colorful sparkles. 
+           
+            I finally grab my own watch, last copy of a long forgotten technology. Should I throw it in the fire? Destroy it for good?
+        links:
+            421: Destroy the watch
+            422: Keep it
+    
+    421:
+        disableRewindTo: 421
+        text: |
+            The watch disappears in the flames, and I suddenly feel powerless.
+            
+            Powerless and... Excited? Each and every choice I'll now make will really matter. It's finally time to move forward.
+            
+            *THE END*
+    
+    422: 
+        text: (none)
+            
     21:
         removeFlag: heart
         continue: 30
@@ -43,13 +108,15 @@ steps:
         
     30:
         text: |
-            The employee turns away to go through his list, then turns back with a saddened face.
+            The employee turns away to go through his list, {{^redFollowsMe}}then turns back with a saddened face.
             « I am very sorry Sir, but I can't find your name... »
             « Are you sure? You looked for {{#heart}}Black Heart{{/heart}}{{^heart}}Red Club{{/heart}}, right? »
             « Again I am sorry, but your name's not on that list. »
-            Just a little mishap.
+            Just a little mishap.{{/redFollowsMe}}{{#redFollowsMe}}until a weapon fires, and the young man collapses. Behind him, Red, points his gun at me.{{/redFollowsMe}}
         links:
-            40: Get the old pocket watch out
+            40: 
+                ifNotFlag: redFollowsMe
+                text: Get the old pocket watch out
     
     40:
         text: |
@@ -110,12 +177,308 @@ steps:
             
     70: 
         text: |
-            The employee turns away to go through his list, then comes back to me to make a quick bow.
-            « I wish you a warm welcome, Sir Rosing. It's a pleasure to have you with us tonight. »
+            The employee turns away to go through his list, {{^redFollowsMe}}then comes back to me, makes a quick bow.
+            « I wish you a warm welcome, Sir Rosing. It's a pleasure to have you with us tonight. »{{/redFollowsMe}}{{#redFollowsMe}}until a weapon fires, and the young man collapses. Behind him, Red, points his gun at me.{{/redFollowsMe}}
         links:
-            100: Enter the building
-            
+            100:
+                ifNotFlag: redFollowsMe
+                text: Enter the builing
+            300:
+                ifFlag: windowsUnlocked
+                ifNotFlag: redFollowsMe
+                text: Climb through the office window
+
 # Second scene
             
     100:
-        text: (TODO) To be continued...
+        text: |
+            J'entre dans une grande salle luxueusment décorée, où des hommes en costume et femmes en robe de soirée discutent par petits groupes, un verre de champagne à la main. Un buffet appétissant occupe tout un mur de la pièce.
+            
+            Il me faut un instant avant de repérer un escalier au fond de la salle, en partie masqué par un imposant lustre.
+            Le bureau doit être à l'étage.
+        links:
+            110: Monter l'escalier
+            105: Examiner les invités
+    
+    105:
+        removeFlag: agentFollowedMe
+        text: Je repère parmi la foule ce qui semble être un agent de sécurité. En faisant attention, je devrais pouvoir atteindre l'escalier sans l'attirer.
+        links:
+            120: Monter l'escalier
+
+    110:
+        removeFlag: hasKey
+        setFlag: agentFollowedMe
+        text: |
+            Sans que les invités ne me prêtent attention, je me faufile entre les invités jusqu'à l'escalier du fond.
+            
+            Une fois parvenu à l'étage, je jette un regard sous la rembarde : quelqu'un se trouve en bas de l'escalier. J'ai l'impression d'avoir été suivi.
+        links: 
+            130: Examiner l'étage
+            115: Redescendre confronter l'intrus
+    
+    115:
+        text: |
+            De peur d'avoir attiré l'attention, je redescends l'air de rien l'escalier... Pour me trouver face à face avec un homme froid aux épaules carrées. Je lui souris :
+            « Veuillez m'excuser, je cherchais les toilettes et— »
+            Avec une vitesse surprenante, le garde me plaque contre le mur, une main sur la bouche. Une douleur déchirante traverse mon ventre, et je m'apprête à perdre connaissance...
+            
+    120:
+        removeFlag: hasKey
+        text: |
+            Sans que personne ne semble me prêter attention, je me faufile entre les invités jusqu'à l'escalier du fond.
+            Une fois parvenu à l'étage, je jette un regard sous la rembarde : le garde ne m'a pas suivi.
+        links:
+            130: Examiner l'étage
+            
+    140:
+        removeFlag: hasKey
+        text: "Je retourne dans le couloir, puis m'arrête subitement : quelqu'un vient de monter l'escalier. Un agent de sécurité me jauge d'un regard froid, puis s'approche lentement vers moi."
+        links:
+            145: Fuir
+            146: Combattre
+            
+    145:
+        text: |
+            Je m'enferme dans la pièce la plus proche, et me retrouve dans l'obscurité. J'entends des voix à l'extérieur, et distingue sous la porte une lumière qui s'échappe et des formes qui s'agitent.
+            « Je crois que je suis fichu, » dis-je à moi-même.
+            
+            Quelqu'un défonce bruyamment la porte d'un coup de pied et trois agents m'encerclent, armés jusqu'aux dents. Ne restons pas pour la suite.
+    
+    146:
+        text: |
+            Je sors un couteau de ma veste. Simultanément, l'agent dégaine un revolver, me met en joue et...
+            D'instinct, je ferme les yeux et me concentre.
+    
+    130:
+        setFlag: corridorVisited
+        text: Le couloir part à gauche et à droite, avec{{^corridorVisited}}, mauvaise nouvelle,{{/corridorVisited}} pas moins de trois portes de chaque côté. Je n'ai pas pu avoir les plans à l'avance, il va falloir chercher le bureau au hasard.
+        longLinks: true
+        links:
+            salle11: "Gauche, 1ère salle : fermée, une voix en sort"
+            salle12: "Gauche, 2ème salle : fermée"
+            salle13: "Gauche, 3ème salle : entrouverte, allumée"
+            salle21: 
+                ifNotFlag: bathroomChecked
+                text: "Droite, 1ère salle : fermée"
+            salleopen: 
+                ifFlag: bathroomChecked
+                text: "Droite, 1ère salle : fermée"
+            salle22:
+                ifNotFlag: hasKey
+                text: "Droite, 2ème salle : fermée, a une porte double"
+            salleopen2:
+                ifFlag: hasKey
+                text: "Droite, 2ème salle : fermée, a une porte double"
+            salle23: "Droite, 3ème porte : fermée, un tapis posé devant"
+
+    salleopen2:
+        continue: salleopen
+    salleopen:
+        text: J'ai déjà fouillé cette pièce.
+        links:
+            130: Retourner dans le couloir
+            
+    salle11:
+        text: J'entrouvre la porte avec précaution. Une radio est allumée à l'intérieur, mais personne ne s'y trouve. Une chambre de serviteur il semblerait.
+        links:
+            130:
+                ifNotFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            140:
+                ifFlag: agentFollowedMe
+                text: Retourner dans le couloir
+    
+    salle12:
+        text: La porte s'ouvre sur un espace de rangement. Je n'y trouve rien d'intéressant.
+        links:
+            130:
+                ifNotFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            140:
+                ifFlag: agentFollowedMe
+                text: Retourner dans le couloir
+                            
+    salle13:
+        text: Je m'approche et glisse mon regard à travers l'interstice, pour y repérer trois personnes armées, assises autour d'une table. La bonne nouvelle, c'est qu'il ne s'agit pas de la bonne pièce.
+        links:
+            130:
+                ifNotFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            140:
+                ifFlag: agentFollowedMe
+                text: Retourner dans le couloir
+                
+    salle21:
+        text: La porte est fermée à clef. En essayant de l'ouvrir, le bruit de la porte a semblé résonner à l'intérieur.
+        links:
+            salle21b: Essayer de la crocheter
+            salle21c:
+                ifFlag: hasKey
+                text: Utiliser la clef
+            130:
+                ifNotFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            140:
+                ifFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            
+    salle21b:
+        setFlag: bathroomChecked
+        text: Je sors un crochet de ma veste et ouvre rapidement la serrure. Une salle de bains.
+        links:
+            130:
+                ifNotFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            140:
+                ifFlag: agentFollowedMe
+                text: Retourner dans le couloir
+        
+    salle21c:
+        text: La clef ne correspond pas.
+        links:
+            130:
+                ifNotFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            140:
+                ifFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            
+                
+    salle22:
+        removeFlag: hasKey
+        text: J'entre dans un grand salon, avec un billard à l'intérieur. Quelqu'un a laissé des clefs sur une chaise, je les ramasse en silence.
+        links:
+            salle22getkey:
+                ifNotFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            140:
+                ifFlag: agentFollowedMe
+                text: Retourner dans le couloir
+    
+    salle22getkey:
+        setFlag: hasKey
+        continue: 130
+                
+    salle23:
+        text: La porte est fermée à clef.
+        links:
+            salle23b: Regarder sous le tapis
+            salle23c: Essayer de la crocheter
+            200:
+                ifFlag: hasKey
+                text: Utiliser la clef
+            130:
+                ifNotFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            140:
+                ifFlag: agentFollowedMe
+                text: Retourner dans le couloir
+    
+    salle23b:
+        text: Rien sous le tapis.
+        links:
+            salle23c: Essayer de la crocheter
+            200:
+                ifFlag: hasKey
+                text: Utiliser la clef
+            130:
+                ifNotFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            140:
+                ifFlag: agentFollowedMe
+                text: Retourner dans le couloir
+    
+    salle23c:
+        text: Je sors un crochet de ma veste et tente d'ouvrir la serrure. Le modèle m'est inconnu... Il semble en fait que toute la porte ait été faite sur mesure. Je vais devoir trouver un autre moyen d'entrer.
+        links:
+            salle23b: Regarder sous le tapis
+            200:
+                ifFlag: hasKey
+                text: Utiliser la clef
+            130:
+                ifNotFlag: agentFollowedMe
+                text: Retourner dans le couloir
+            140:
+                ifFlag: agentFollowedMe
+                text: Retourner dans le couloir
+
+    200:
+        disableRewindTo: 200
+        text: |
+            La clef correspond.
+            
+            La porte s'ouvre sur une grande salle doucement éclairée, imprégnée d'une odeur de tabac. Des livres recouvrent les murs, et un imposant bureau décoré avec élégance se trouve au fond de la pièce. Il n'y a personne dans la salle. 
+        links:
+            210: Fouiller la salle
+            
+    210:
+        text: |
+            A peine commencè-je mes recherches qu'un bruissement me force à me retourner : une bibliothèque s'est écartée du mur, et un homme élancé se tient dans l'encadrement, un dossier à la main.
+            
+            Je reconnais cette silhouette. Il s'agit de *Red Spade*, un... ancien collègue.
+            
+            Celui-ci s'avance dans la lumière, et rompt le silence d'un rire hautain :
+            
+            « {{#heart}}Black Heart{{/heart}}{{^heart}}Red Club{{/heart}}. Alors comme ça il t'ont envoyé ici ! Ils prennent mes projets très au sérieux apparemment... »
+            « Red Spade. C'est donc toi qui es derrière la construction de cette arme. Je ne te laisserai pas faire ! »
+            
+            Des gardes armés entrent dans la pièce.
+        links:
+            215: Chercher une sortie
+            216: Ne rien faire
+            
+    215: 
+        text: Je me retourne brièvement. La fenêtre est ouverte, mais trop haute pour tenter le plongeon.
+        continue: 216
+    
+    216:
+        disableRewindTo: '-'
+        setFlag: windowsUnlocked
+        text: |
+            Tandis que les agents s'approchent de moi, Red Spade me montre sa chemise de documents :
+            
+            « C'est ça que tu es venu chercher, n'est-ce pas ? Quel dommage, tu étais si près du but ! »
+            « Oh ne t'inquiète pas pour moi, » fais-je avec un sourire poli.
+            
+            Je devrais pouvoir revenir au bureau par un autre moyen, plus rapide. Peut-être une fenêtre ?
+
+# Third scene
+
+    300: 
+        text: |
+            {{^redFollowsMe}}Une fois trompée la vigilance du réceptionniste, je me mets à longer le mur extérieur dans l'obscurité.
+            Je repère la fenêtre du salon, délace mes chaussures, puis me mets à grimper à l'aide des reliefs du mur.
+            Je rejoins rapidement le bureau, dont la fenêtre est par chance toujours (...déjà ?) ouverte.{{/redFollowsMe}}{{#redFollowsMe}}Je cours me placer sous la fenêtre du salon, lorsque retentit un coup de feu. Un morceau de mur éclate à quelques centimètres de moi.
+            
+            Je me retourne, et à la place du réceptionniste se tient un Red au sourire terrible, l'arme pointée sur moi.
+            « Tu ne m'échapperas pas ! » me crie-t-il.
+            
+            Aurait-il le même pouvoir que moi ? Comment le combattre ? Je dois revenir plus tôt !{{/redFollowsMe}}
+        links:
+            305:
+                ifNotFlag: redFollowsMe
+                text: Fouiller le bureau
+            310:
+                ifNotFlag: redFollowsMe
+                text: Essayer d'ouvrir le passage secret
+             
+    305:
+        text: |
+            Je parcours la pièce rapidement sans rien trouver d'utile. De toutes manières, les informations que je recherche sont derrière ce passage.
+            
+            Pour gagner quelques précieux instants, je me concentre pour revenir quelques instants en arrière.
+    310:
+        text: |
+            Je parcours mes mains sur la bibliothèque à la recherche d'une ouverture, et finis par remarquer une fente dans le fond du meuble, entre deux livres. Je sors mon couteau cran, le déplie et insère la pointe dans l'ouverture.
+            Un déclic se fait entendre.
+        links:
+            320: Entrer dans la salle secrète
+            
+    320:
+        disableRewindTo: '-'
+        setFlag: redFollowsMe
+        text: |
+            Le meuble cède le passage en silence. Je m'engage dans l'ouverture... et me retrouve nez-à-nez avec Red Spade.
+            « Tu es trop lent ! » s'exclame-t-il, brandissant une lame.
+            Comment est-ce possible ? Je dois réessayer. Peut-être grimper de nouveau, cette fois plus rapidement ?
