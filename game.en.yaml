@@ -71,13 +71,13 @@ steps:
             The employee laughs:
             « Go ahead, what do I have in my jacket? »
         links:
-            51bis: I see!
+            51bis: I know what it is!
     51bis: 
         text: « What you have is...  »
         links:
             52: A paper tissue
-            53: A black pen
-            54: A car key
+            53: A pack of cigarettes
+            54: A bunch of keys
             60:
                 ifFlag: 100dollars
                 text: A dollar bill
