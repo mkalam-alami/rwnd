@@ -7,14 +7,14 @@
 </head>
 <body>
 
-<h1 id="gameTitle"><span class="red">red spade</span> &spades;</h1>
+<h1 id="game-title"><span class="red">red spade</span> &spades; <span class="game-title-legend">An interactive short story (~10mn)</span></h1>
 
 <div id="rwnd-container">
 </div>
 
 <div id="footer">
 <span class="pull-right">
-    A <a href="http://ludumdare.com/compo/ludum-dare-36/?action=preview&uid=9172">Ludum Dare 36 entry</a>, by <a href="https://twitter.com/mkalamalami">Wan</a>. Powered by <a href="https://github.com/mkalam-alami/rwnd">rwnd</a>. MIT-licensed (<a href="https://github.com/mkalam-alami/rwnd/tree/ld36">Sources</a>).
+    A <a href="http://ludumdare.com/compo/ludum-dare-36/?action=preview&uid=9172">Ludum Dare 36 entry</a>, by <a href="https://twitter.com/mkalamalami">Wan</a>. Powered by <a href="https://github.com/mkalam-alami/rwnd">rwnd</a>. MIT-licensed (<a href="https://github.com/mkalam-alami/rwnd/tree/ld36">sources</a>).
 </span>
 <a href="?fr"><img src="img/fr.png"></a>
 <a href="?en"><img src="img/en.png"></a>
@@ -58,7 +58,7 @@ rwnd.loadFile(fileName, function (game) {
         if (targetStepId == 22) isHeart = true;
         if (targetStepId == 420) {
             // change game title on game end :-O
-            document.getElementById('gameTitle')
+            document.getElementById('game-title')
                 .innerHTML = isHeart ? '<span class="red">black heart</span> &hearts;' : '<span class="red">red clubs</span> &clubs;';
             document.getElementsByTagName('title')[0]
                 .innerHTML = isHeart ? 'black heart &hearts;' : 'red clubs &clubs;';

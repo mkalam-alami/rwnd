@@ -51,14 +51,14 @@ a:hover {
     margin: auto;
     max-width: 900px;
     padding-top: 5px;
-    color: #151520;
+    color: #678;
 }
 #footer a {
-    color: #151520;
+    color: #678;
     font-weight: bold;
 }
 #footer a:hover {
-    color: black;
+    color: white;
 }
 #footer img {
     border-left: 1px solid #151520;
@@ -69,6 +69,12 @@ a:hover {
 #footer .pull-right {
     float: right;
     text-align: right;
+}
+
+.game-title-legend {
+    font-size: 1rem;
+    color: #678;
+    padding-left: 20px;
 }
 
 .rwnd-step {
