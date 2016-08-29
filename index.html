@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<h1><span class="red">red spade</span> &spades;</h1>
+<h1 id="gameTitle"><span class="red">red spade</span> &spades;</h1>
 
 <div id="rwnd-container">
 </div>
@@ -50,7 +50,26 @@
 <script type="text/javascript" src="lib/rwnd.js"></script>
 <script type="text/javascript">
 var fileName = (window.location.href.indexOf('?en') != -1) ? 'game.en.yaml' : 'game.fr.yaml';
-rwnd.loadFile(fileName);
+rwnd.loadFile(fileName, function (game) {
+    var linkCallback = game.view.callbacks['link'];
+    var isHeart = false;
+    game.view.setCallback('link', function(linkStateId, targetStepId) {
+        if (targetStepId == 21) isHeart = false;
+        if (targetStepId == 22) isHeart = true;
+        if (targetStepId == 420) {
+            // change game title on game end :-O
+            document.getElementById('gameTitle')
+                .innerHTML = isHeart ? '<span class="red">black heart</span> &hearts;' : '<span class="red">red clubs</span> &clubs;';
+            document.getElementsByTagName('title')[0]
+                .innerHTML = isHeart ? 'black heart &hearts;' : 'red clubs &clubs;';
+            
+        }
+        
+        linkCallback.callback.apply(linkCallback.context, [linkStateId, targetStepId]);
+    }, this);
+});
+
+
 </script>
 
 </body>

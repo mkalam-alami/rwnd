@@ -9,7 +9,7 @@ steps:
 
     10:
         text: |
-            I reach the entrance of the building. Chatter and glass clinkings can be heard from inside.
+            I reach the entrance of the mansion. Chatter and glass clinkings can be heard from inside.
             A receptionist stands by the door.
         links:
             20: Present myself
