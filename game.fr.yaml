@@ -9,9 +9,9 @@ steps:
 
     10:
         #debug
-        setFlag: redFollowsMe
+        #setFlag: redFollowsMe
         text: |
-            J'arrive face au manoir, caché par l'obscurité. Une lumière chaude s'échappe de l'entrée, accompagnée du bruit de conversations et de verres qui s'entrechoquent.
+            J'approche du manoir, m'arrête une distance suffisante pour rester caché par l'obscurité. Une lumière chaude s'échappe de l'entrée, accompagnée du bruit de conversations et de verres qui s'entrechoquent.
             Un réceptionniste se tient devant la porte.
         links:
             20:
@@ -20,7 +20,7 @@ steps:
      
     20:
         #debug
-        setFlag: redShotMe
+        #setFlag: redShotMe
         text: |
             {{^redShotMe}}{{^redFollowsMe}}Le jeune employé, rongé par l'ennui en cette fin de soirée, sourit en me voyant. Je me présente avec enthousiasme :
             « Bonsoir cher ami ! Je suis attendu sous le nom de... »{{/redFollowsMe}}{{#redFollowsMe}}J'approche du manoir, mais le réceptionniste n'est autre que Red Spade. Il agite son arme en me narguant :
@@ -166,7 +166,10 @@ steps:
             « Dommage, » fais-je avec humilité. « C'était quoi ? »
             « Vous ne valez pas grand-chose comme magicien ! C'était un pourboire de cent dollars », lance-t-il fièrement.
             « C'est tout ce que voulais savoir. »
-            Sous son regard perplexe, je lève lentement ma montre à gousset, et me concentre sur un point dans le passé...
+            Sous son regard perplexe, je lève lentement ma montre à gousset...
+            
+            
+            *Cliquez sur un des liens de l'histoire pour remonter dans le temps*
             
     60:
         setFlag: boris
