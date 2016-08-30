@@ -60,15 +60,15 @@ rwnd.loadFile(fileName, function (game) {
         if (targetStepId == 422) {
             // evil ending
             var i = 0, steps = document.getElementsByClassName('rwnd-step');
-            for (var i = 0; i < 10; i++) {
+            for (var i = 0; i < 20; i++) {
                 setTimeout(function() {
                     for (var id in steps) {
                         var step = steps[id];
                         if (step.innerHTML) {
-                            step.textContent = step.textContent.slice(0,Math.floor(step.textContent.length * 4 / 5));
+                            step.textContent = step.textContent.slice(0,Math.floor(step.textContent.length * 9 / 10));
                         }
                     }
-                }, i * 200);
+                }, i * 100);
             }
             
             setTimeout(function() {
