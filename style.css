@@ -88,6 +88,7 @@ a:hover {
 }
 
 .rwnd-link {
+    display: block;
     cursor: pointer;
     text-decoration: none;
     font-weight: bold;
@@ -103,10 +104,6 @@ a:hover {
 }
 .rwnd-link-disabled:hover {
     color: #A96;
-}
-
-.rwnd-link-long {
-    display: block;
 }
 
 .rwnd-hidden {
