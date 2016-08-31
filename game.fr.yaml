@@ -208,9 +208,9 @@ steps:
             Le bureau doit être à l'étage.
         links:
             110: Monter l'escalier
-            105: Examiner les invités
+            111: Rester examiner la salle
     
-    105:
+    111:
         removeFlag: agentFollowedMe
         text: Je repère parmi la foule ce qui semble être un agent de sécurité. En faisant attention, je devrais pouvoir atteindre l'escalier sans l'attirer.
         links:
@@ -335,7 +335,9 @@ steps:
             
     salle21b:
         setFlag: bathroomChecked
-        text: Je sors un crochet de ma veste et ouvre rapidement la serrure. Une salle de bains.
+        text: |
+            Je sors un crochet de ma veste et ouvre rapidement la serrure.
+            Ce n'est rien qu'une grande salle de bains. A part des parfums coûteux et des crèmes en tous genres, j'y remarque seulement une étrange boîte où sont parfaitement alignés des... yeux en verre.
         links:
             130:
                 ifNotFlag: agentFollowedMe

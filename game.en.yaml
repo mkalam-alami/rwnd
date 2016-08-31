@@ -22,7 +22,7 @@ steps:
             « Good evening my friend! I'm invited under the name... »{{/redFollowsMe}}{{#redFollowsMe}}I get closer to the mansion, and the receptionist is no one but Red Spade. He  jiggles his gun while taunting me:
             « You played, and lost my dear friend. Soon, I will finish building by time bomb, and will freeze your whole country in time for a hundred years! And it will all be possible thanks to this. » He brandishes an old pocket watch, the perfect look-alike to mine.
             « After being frozen in time, your civilization will be completely obsolete, and your ancient technologies will be of no help when I'll come and invade it!! »
-            He bursts in an unpleasant laugh.{{/redFollowsMe}}{{/redShotMe}}{{#redShotMe}}I take a deep breath: I'm still alive! I feel my chest with my hands, to find the wound has disappeared. I give myself a few seconds to calm down and catch my breath.
+            He bursts into an unpleasant laugh.{{/redFollowsMe}}{{/redShotMe}}{{#redShotMe}}I take a deep breath: I'm still alive! I feel my chest with my hands, to find the wound has disappeared. I give myself a few seconds to calm down and catch my breath.
             
             Red is still looking out from the mansion's entrance.{{/redShotMe}}
         links:
@@ -70,12 +70,12 @@ steps:
             He uses his free arm to reach for his back pocket, probably to use his watch. His arrogant look suddenly fades away. I tighten my grip.
             
             
-            A few minutes later, I finally hold in my hands the goal of the mission. This file contains everything needed to build a mass weapon able to stop time... So much power cannot end on the wrong hands.
+            A few minutes later, I finally hold in my hands the goal of the mission. This file contains everything needed to build a mass weapon able to stop time... So much power cannot end up in the wrong hands.
             
             
-            I get closer to the fireplace, and hesitate a moment, about to betray my mission orders. In an abrupt move, I throw the documents in the flames. Red's ancient watch quickly follows, bursting in colorful sparkles. 
+            I get closer to the fireplace, and hesitate a moment, about to betray my mission orders. In an abrupt move, I throw the documents in the flames. Red's ancient watch quickly follows, bursting into colorful sparkles. 
            
-            I finally grab my own watch, last specimen of a long forgotten technology. Should I throw it in the fire? Destroy it for good?
+            I finally grab my own watch, the last specimen of a long forgotten technology. Should I throw it in the fire? Destroy it for good?
         links:
             421: Destroy the watch
             422: Keep it
@@ -125,7 +125,7 @@ steps:
             « What kind of powers? »
             « This device allows me to travel through time. To explore the space-time multiverse, if you will. And therefore, it lets me gain access to unlimited knowledge! »
             « Uh, I don't see the link between... time travel and... knowledge? »
-            « Doesn't matter— my point is, I'm about to find out what your inside, right pocket contains. »
+            « Doesn't matter— my point is, I'm about to find out what your inside right pocket contains. »
         links:
             50: Pretend to concentrate
             51: Whisper incantations
@@ -162,7 +162,7 @@ steps:
             « What a shame, I guess I failed, » I answer with humility. « What was it? »
             « I've seen better magicians! It actually was a hundred-dollar tip », he says proudly.
             « That's all I needed to know... »
-            Before his puzzled look, I slowly raise my pocket watch in front of me, and close my eyes...
+            He looks on, puzzled, as I slowly raise my pocket watch in front of me, and close my eyes...
             
             
             *You can use the past links of the story to rewind time.*
@@ -195,14 +195,14 @@ steps:
             
     100:
         text: |
-            I enter a large room, luxuriously decorated. Men in suits and women in evening dresses chat in small groups. Most of them hold a glass of wine or champagne. An appetizing buffet takes up a whole wall.
+            I enter a large, luxuriously decorated room. Men in suits and women in evening dresses chat in small groups. Most of them hold a glass of wine or champagne. An appetizing buffet takes up a whole wall.
             
-            It takes me a while to locate the back stairs, because of a large chandelier blocking my view. That's where I have to go next: the office must be at the upper floor.
+            It takes me a while to locate the back stairs, because of a large chandelier blocking my view. That's where I have to go next: the office must be on the upper floor.
         links:
             110: Climb the stairs
-            105: Examine the guests 
+            111: Stay and examine the room
     
-    105:
+    111:
         removeFlag: agentFollowedMe
         text: I notice what seems to be a security agent within the crowd. Given his location, I should be able to climb the stairs without getting noticed.
         links:
@@ -214,18 +214,18 @@ steps:
         text: |
             No one seems to notice me while I cut through the crowd to the back of the reception.
             
-            Once I reach the upper floor, I peek down the staircase: it seems like someone is approaching... I may have been followed.
+            Once I reach the upper floor, I peek down the staircase. It seems like someone is approaching... I may have been followed.
         links: 
             130: Inspect the floor
             115: Go back down to confront him
     
     115:
         text: |
-            Fearing I have caught the attention, I walk down the stairs casually... And come face-to-face with a man blocking my way, with a cold look and broad shoulders.
+            Fearing I've caught someone's attention, I walk down the stairs casually... And come face to face with a broad-shouldered man blocking my way. He gives me a cold look.
             
             I politely smile at him:
             « Excuse me sir, I was looking for the bathroom and— »
-            With an unexpected speed, the guard smashes me against the wall, a hand over my mouth. Then a sudden, unbearable pain hits my belly, and I start to lose consciousness... I must... Quickly...
+            With unexpected speed, the guard smashes me against the wall, a hand over my mouth. Then a sudden, unbearable pain hits my belly, and I start to lose consciousness... I must... Quickly...
             
     120:
         removeFlag: hasKey
@@ -238,14 +238,14 @@ steps:
             
     140:
         removeFlag: hasKey
-        text: "I go back to the hall, and freeze: someone just climbed the stairs. A security agent gauges me, then starts moving slowly towards me, watching my movements."
+        text: "I go back to the hall, and freeze. Someone just climbed the stairs. A security agent gauges me, then starts moving slowly towards me, watching my movements."
         links:
             146: Attack
             145: Flee
             
     145:
         text: |
-            I run away and lock myself in the nearest room, ending up in the dark. I listen with attention, hearing voices outside. Shapes move under the door.
+            I run away and lock myself in the nearest room, ending up in the dark. I listen with attention, hearing voices outside. Shadows are moving under the door.
             « This timeline is a dead-end, » I say to myself.
             Someone loudly smashes the door, and three agents now surround me, armed to the teeth. I'm not interested in what's next, let's go back!
     
@@ -293,7 +293,7 @@ steps:
                 text: Go back to the hall
     
     salle12:
-        text: The door opens on a storage room. I don't find anything interesting.
+        text: The door opens onto a storage room. I don't find anything interesting.
         links:
             130:
                 ifNotFlag: agentFollowedMe
@@ -303,7 +303,7 @@ steps:
                 text: Go back to the hall
                             
     salle13:
-        text: I get closer and look through the gap, getting a glimpse of three men in arms, sitting around a table. Good news is, it's not the room I'm looking for.
+        text: I get closer and look through the gap, getting a glimpse of three armed men, sitting around a table. The good news is that it's not the room I'm looking for.
         links:
             130:
                 ifNotFlag: agentFollowedMe
@@ -328,7 +328,9 @@ steps:
             
     salle21b:
         setFlag: bathroomChecked
-        text: I grab a pick from my inside pocket, and quickly break the lock open. A bathroom.
+        text: |
+            I grab a pick from my inside pocket, and quickly break the lock open.
+            It's just a large, extravagant bathroom. There's nothing to see here, except for expensive perfumes and lotions, plus a strange box holding neatly aligned... glass eyes.
         links:
             130:
                 ifNotFlag: agentFollowedMe
@@ -412,17 +414,17 @@ steps:
             The key matches. I'm in!
             
             The door opens on a large and softly lit room, where  floats a scent of tobacco. Rows of books cover the walls, except one spot where a small chimney stands.
-            A large desk, tastefully decorated sits at the back of the office. There's nobody here.
+            A large desk, tastefully decorated, sits at the back of the office. There's nobody here.
         links:
             210: Search the room
             
     210:
         text: |
-            I've barely started to inspect the desk contents, when a soft swish makes me turn aside: a bookcase moved away from the wall, and a tall man stands in the opening. He holds a file in his hand.
+            I've barely started to inspect the desk contents when a soft swish makes me turn aside. A bookcase is moving away from the wall, and a tall man stands in the opening. He holds a file in his hand.
             
             I recognize that silhouette. It must be *Red Spade*... An old colleague.
             
-            He makes a step forward in the light, and breaks the silence with haughty laughter:
+            He takes a step forward into the light, and breaks the silence with haughty laughter:
             
             « {{#heart}}Black Heart{{/heart}}{{^heart}}Red Club{{/heart}}, is this you? So they sent you here! It seems like they take my project very seriously... »
             « Red Spade. So you're the one behind that weapon project. I will stop you from building it! »
@@ -445,14 +447,14 @@ steps:
             « I suppose this is what you came for, isn't it? Too bad, you were so close to your goal! »
             « Oh, don't worry about me. »
             
-            I should be able to get back to the office with a different, faster means. What about climbing the windows?
+            I should be able to get back into the office with a different, faster way. What about climbing the wall up to the windows?
 
 # Third scene
 
     300: 
         text: |
             {{^redFollowsMe}}I get around the vigilance of the receptionist, and start walking along the outer wall, hidden by the night. I locate the office window, then untie my shoes and start climbing.
-            I quickly reach the office, of which the window is fortunately still (...or should I say, already?) open.{{/redFollowsMe}}{{#redFollowsMe}}I sprint to the office window, until a shot is fired. A piece of the wall bursts inches away from me.
+            I quickly reach the office. Fortunately, the window is still (or should I say already?) open.{{/redFollowsMe}}{{#redFollowsMe}}I sprint towards the office window. Suddenly a shot is fired, and a piece of the wall bursts inches away from me.
             
             I turn around. Where the receptionist once was stands Red, with an evil smile and a gun pointed right at me.
             « You just can't escape! » he shouts.
@@ -483,7 +485,7 @@ steps:
         disableRewindTo: '-'
         setFlag: redFollowsMe
         text: |
-            The piece of furniture slides easily and silently. I enter the passage... To end up face-to-face with Red Spade.
+            The piece of furniture slides easily and silently. I enter the passage... And end up face-to-face with Red Spade.
             « You are too slow! » he exclaims, brandishing a blade.
             
             How is it possible? I have to try again. Maybe climb the wall again, faster this time?
