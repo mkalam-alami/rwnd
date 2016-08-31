@@ -102,7 +102,7 @@ Use this on a step to prevent the user from rewinding the story, up to the speci
     checkpoint:
         disableRewindTo: checkpoint
         text: You finally slained the dragon!
-        link: 
+        links: 
             quest2: Next quest
 ```
 
