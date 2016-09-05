@@ -22,7 +22,7 @@ p {
     padding-bottom: 5px;
 }
 
-#rwnd-container {
+#game {
     background-color: #DCA;
     margin: auto;
     max-width: 900px;
@@ -31,39 +31,6 @@ p {
     color: #012;
     font-size: 1.1rem;
     line-height: 1.5rem;
-}
-
-.rwnd-step {
-    opacity: 1.0;
-    transition: 0.5s;
-}
-
-.rwnd-links {
-    margin: 10px;
-    padding-bottom: 20px;
-}
-
-.rwnd-link {
-    display: block;
-    cursor: pointer;
-    text-decoration: none;
-    font-weight: bold;
-    color: #012;
-}
-.rwnd-link:hover {
-    color: #356;
-}
-
-.rwnd-link-disabled {
-    color: #A96;
-    cursor: not-allowed;
-}
-.rwnd-link-disabled:hover {
-    color: #A96;
-}
-
-.rwnd-hidden {
-    opacity: 0.0 !important;
 }
 
 .rwnd-menu {

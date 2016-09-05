@@ -9,45 +9,17 @@
 
 <h1>rwnd game</h1>
 
-<div id="rwnd-container">
+<div id="game">
+    <div id="rwnd-menu"></div>
+    <div id="rwnd-steps"></div>
 </div>
-
-<script id="rwnd-menu-template" type="text/template">
-<div id="{{elId}}" class="rwnd-step {{#options.animate}}rwnd-hidden{{/options.animate}}">
-    <div class="rwnd-text">{{{text}}}</div>
-    <div class="rwnd-links">
-    {{#links}}
-        {{^options.linksDisabled}}
-        <span id="{{linkElId}}" class="rwnd-link"
-            data-rwnd-state="{{stateId}}" data-rwnd-link="{{linkId}}">[ {{{linkText}}} ]</span>
-        {{/options.linksDisabled}}
-        {{#options.linksDisabled}}
-        <span class="rwnd-link rwnd-link-disabled">[ {{{linkText}}} ]</a> 
-        {{/options.linksDisabled}}
-    {{/links}}
-    </div>
-</div>
-</script>
-
-<script id="rwnd-footer-template" type="text/template">
-<div class="rwnd-menu">
-    <span id="rwnd-cancel" class="rwnd-link">[ Cancel ]</span>
-    <span id="rwnd-restart" class="rwnd-link">[ Restart ]</span>
-</div>
-</script>
 
 <script type="text/javascript" src="lib/js-yaml.min.js"></script>
 <script type="text/javascript" src="lib/mustache.min.js"></script>
 <script type="text/javascript" src="lib/showdown.min.js"></script>
 <script type="text/javascript" src="lib/rwnd.js"></script>
 <script type="text/javascript">
-rwnd.loadFile('game.yaml', function(game) {
-    if (!game) { 
-        rwnd.loadFile('game.json', function(game) { // look for a json version?
-            if (!game) rwnd.loadFile('game.yaml.example'); // or just load the demo file.
-        });
-    }
-});
+rwnd.loadFile('game.yaml.example');
 </script>
 
 </body>
