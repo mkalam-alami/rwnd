@@ -187,9 +187,9 @@ All options are advanced, optional stuff.
 * `options.menuTemplate`: String. Replaces the default menu HTML with your own. Your HTML must contain elements with IDs `rwnd-cancel` and `rwnd-restart`.
 * `options.stepsEl`: DOM Element. Sets a custom location for the story.
 * `options.stepTemplate`: String. Replaces the default step HTML (Mustache template) with your own. See the sources for an example.
-* `options.customView`: Allows to completely replace the default game view with your own JS code. The object must have the same public API (see sources). Note that replacing the view will make all other options (but `callback`) obsolete.
+* `options.customView`: Object. Allows to completely replace the default game view with your own JS code. The object must have the same public API (see sources). Note that replacing the view will make all other options (but `callback`) obsolete.
 
-### `rwnd.runString(data[, options])`
+### `rwnd.runFromData(data[, options])`
 
 Same as the previous call, except you're passing the YAML/JSON story directly (string or JSON object). The game will be loaded synchronously and return the `game`.
 
