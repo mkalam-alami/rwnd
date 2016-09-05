@@ -17,12 +17,15 @@ steps:
                 text: Turn right
             
     left:
-        text: You turned left. You find a sword.
+        text: |
+            You turned left.
+            You find a sword on the floor!
         links:
-            -   to: grabsword
+            -   to: left_continue
                 set: sword
                 text: Grab the sword
-                
+            -   to: left_continue
+                text: Leave the sword
 [...]
 ```
 
@@ -34,32 +37,34 @@ steps:
 
 ### `set/unset`: Writing flags
 
-You can set and remove flags when reaching a step or clicking a link:
+You can manipulate flags when reaching a step:
 
 ```     
     pick_sword:
         text: You just picked a sword!
-        **set: sword**
+        set: sword
 ```
 
 ```     
     lose_sword:
         text: You just broke your sword!
-        **unset: sword**
+        unset: sword
 ```
+
+It also works on links:
 
 ```   
     find_sword:
         text: You find a sword.
         links:
             -   to: encounter
-                **set: sword**
+                set: sword
                 text: Grab the sword
             -   to: encounter
                 text: Leave the sword
 ```
 
-### `if/ifNot`: Using flags
+### `if/ifNot`: Reading flags
 
 The main purpose of flags is to show or hide links:
 
@@ -69,7 +74,7 @@ The main purpose of flags is to show or hide links:
         links:
             -   flee: Flee
             -   attack_monster:
-                **if: sword**
+                if: sword
                 text: Attack with your sword
 ```
 
@@ -78,7 +83,7 @@ The main purpose of flags is to show or hide links:
         text: Do you have a sword?
         links:
             -   pnj_lie:
-                **ifNot: sword**
+                ifNot: sword
                 text: Yes (lie)
 ```
 
@@ -101,7 +106,7 @@ Redirects work like `links`, except they are followed immediately, without displ
             [...]
 ```
 
-Of course, you can also work with flags in redirects:
+Of course, they can also work with flags:
 
 ``` 
     ending_selection:
@@ -124,13 +129,7 @@ Use this on a step to prevent the user from rewinding the story, up to the speci
             quest2: Next quest
 ```
 
-To unlock everything, use the special value `-`:
-
-``` 
-    theend: 
-        disableRewindTo: "-"
-        text: Congratulations, you win!
-```
+To unlock everything, use the special value `-`.
 
 ### Text formatting
 
@@ -138,7 +137,9 @@ Markdown syntax is supported. You can also flavor the text with game flags, than
 
 ```                 
     monster:
-        text: "**A goblin appears!** {{#sword}}It looks at your sword and hesitates...{{/sword}}{{^sword}}It attacks you!{{/sword}}"
+        text: |
+            "**A goblin appears!** 
+            {{#sword}}It looks at your sword and hesitates...{{/sword}}{{^sword}}It attacks you!{{/sword}}"
 ```
 
 ### Configuration keys
