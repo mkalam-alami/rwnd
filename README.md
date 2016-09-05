@@ -9,7 +9,7 @@ The story is written in either YAML or JSON, with something like:
 ```
 steps: 
     start:
-        text: You are in a cave. You can turn left or right.
+        text: You are in a cave, you can turn left or right.
         links:
             -   to: left
                 text: Turn left
@@ -144,9 +144,16 @@ Markdown syntax is supported. You can also flavor the text with game flags, than
 
 ### Configuration keys
 
-* `initialStep`: Allows to customize the initial step (defaults to `start`).
-* `saveId`: If set, the game will auto-save using that ID.
-* `persistFlags`: Allows to persist flags even if you rewind in the story. Unusual, but can lead to interesting gameplay (defaults to false).
+```                 
+config:
+    initialStep: start   ### Allows to customize the initial step (defaults to `start`).
+    saveId: myGame   ### If set, the game will auto-save using that ID.
+    persistFlags: false   ### Allows to persist flags even if you rewind in the story (defaults to false).
+                          ### Unusual, but can yield cool time travel gameplay.
+
+steps:
+[...]
+```
 
 ## API
 
