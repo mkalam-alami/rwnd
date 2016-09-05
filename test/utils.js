@@ -25,7 +25,7 @@ window.rwndTest = (function() {
     
     function TestView() {
         
-        // View API implementation 
+        // API implementation 
         
         this.init = function(options) {
             this.listeners = {};
@@ -48,7 +48,7 @@ window.rwndTest = (function() {
             })
         }
         
-        // Test functions > Click
+        // test functions > click
         
         this.clickLink = function(stepIdOrState, linkIndex) {
             var state;
@@ -76,7 +76,7 @@ window.rwndTest = (function() {
             this._fireEvent('restart');
         }
         
-        // Test functions > Find states
+        // test functions > find states
         
         this.findStepStates = function(stepId) {
             var states = [];
@@ -92,7 +92,7 @@ window.rwndTest = (function() {
             return (states.length > 0) ? states[states.length - 1] : null;
         }
         
-        // Test functions > test history
+        // test functions > test history
         
         this.isStepShown = function(stepId) {
             return this.findStepStates(stepId).length > 0;
@@ -106,22 +106,7 @@ window.rwndTest = (function() {
             return history;
         }
         
-        this.matchHistory = function(stepIds) {
-            var history = this.computeHistory();
-            if (this.model.states.length != stepIds.length) {
-                return false;
-            }
-            else {
-                for (var i = 0; i < stepIds.length; i++) {
-                    if (history[i] != stepIds[i]) {
-                        return false;
-                    }
-                }
-            }
-            return true;
-        }
-        
-        // Test functions > test links
+        // test functions > test links
         
         this.matchVisibleLinks = function(linkIndexes, state) {
             state = state || this.model.getLastState();
@@ -147,14 +132,14 @@ window.rwndTest = (function() {
             return this.model.isSatisfied(state.step.links[linkIndex], state.flags);
         }
         
-        // Test functions > flags
+        // test functions > flags
         
         this.isFlagSet = function(flag) {
             var state = this.model.getLastState();
             return !!state.flags[flag];
         }
         
-        // Test functions > internal
+        // test functions > internal
         
         this._fireEvent = function(eventId, parameters) {
             if (this.listeners[eventId]) {

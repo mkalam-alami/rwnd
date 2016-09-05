@@ -11,7 +11,7 @@ describe("rwnd", function() {
     
     it("should only show the starting step at first", function(done) {
         rwndTest.run('story-minimal.yml', function(game) {
-            expect(game.view.matchHistory(['start'])).toBe(true);
+            expect(game.view.computeHistory()).toEqual(['start']);
             done();
         });
     });
@@ -21,7 +21,7 @@ describe("rwnd", function() {
     it("should follow a clicked link", function(done) {
         rwndTest.run('story-minimal.yml', function(game) {
             game.view.clickLink('start', 1);
-            expect(game.view.matchHistory(['start', 'right'])).toBe(true);
+            expect(game.view.computeHistory()).toEqual(['start', 'right']);
             done();
         });
     });
@@ -65,4 +65,17 @@ describe("rwnd", function() {
             done();
         });
     });
+    
+    // redirects
+    
+    it("should support a full redirect scenario", function(done) {
+        rwndTest.run('story-redirect.yml', function(game) {
+            game.view.clickLink('start', 0);
+            expect(game.view.computeHistory()).toEqual(['start', '0', '1', '2', '3']);
+            done();
+        });
+    });
+    
+    // TODO test rewind, persistFlags, flags in text
+    
 });

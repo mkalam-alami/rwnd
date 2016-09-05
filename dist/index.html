@@ -23,13 +23,17 @@ function runYml() {
         callback: runJson
     });
 }
-function runJson() {
-    rwnd.run('game.json', {
-        callback: runExample
-    });
+function runJson(game) {
+    if (!game) {
+        rwnd.run('game.json', {
+            callback: runExample
+        });
+    }
 }
-function runExample() {
-    rwnd.run('game.yml.example');
+function runExample(game) {
+    if (!game) {
+        rwnd.run('game.yml.example');
+    }
 }
 </script>
 
