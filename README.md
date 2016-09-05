@@ -29,8 +29,8 @@ steps:
 [...]
 ```
 
-1. Write your story in a `game.yml` (or `game.json`) file at the root
-2. Serve with your favorite web server (I like [http-server](https://www.npmjs.com/package/http-server) for development).
+1. Grab the `dist/` folder and serve it with your favorite web server (I like [http-server](https://www.npmjs.com/package/http-server) for development).
+2. Write your story in a `game.yml` (or `game.json`) file.
 3. Play!
 
 ## Made with rwnd

@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #445;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    padding: 20px;
+    font-size: 15px;
+}
+
+h1 {
+    margin: auto;
+    max-width: 900px;
+    color: #DCA;
+    padding-bottom: 10px;
+    font-size: 2rem;
+}
+
+p {
+    padding-bottom: 5px;
+}
+
+#rwnd-container {
+    background-color: #DCA;
+    margin: auto;
+    max-width: 900px;
+    box-sizing: border-box;
+    padding: 20px;
+    color: #012;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+}
+
+.rwnd-step {
+    opacity: 1.0;
+    transition: 0.5s;
+}
+
+.rwnd-links {
+    margin: 10px;
+    padding-bottom: 20px;
+}
+
+.rwnd-link {
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    color: #012;
+}
+.rwnd-link:hover {
+    color: #356;
+}
+
+.rwnd-link-disabled {
+    color: #A96;
+    cursor: not-allowed;
+}
+.rwnd-link-disabled:hover {
+    color: #A96;
+}
+
+.rwnd-hidden {
+    opacity: 0.0 !important;
+}
+
+.rwnd-menu {
+    text-align: right;
+    font-size: 0.8rem;
+}

@@ -1,0 +1,29 @@
+{
+    "name": "rwnd",
+    "version": "0.2.0-dev",
+    "description": "A minimal interactive story engine",
+    "author": "Marwane Kalam-Alami <marwane@kalam-alami.net>",
+    "main": "src/rwnd.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mkalam-alami/rwnd"
+    },
+    "bugs": {
+        "url": "https://github.com/mkalam-alami/rwnd/issues"
+    },
+    "dependencies": {
+        "mustache": "2.2.1",
+        "js-yaml": "3.6.1",
+        "showdown": "1.4.3"
+    },
+    "devDependencies": {
+        "karma": "1.2.0",
+        "karma-jasmine": "1.0.2",
+        "karma-chrome-launcher": "2.0.0"
+    },
+    "license": "MIT",
+    "scripts": {
+        "test": "karma start",
+        "rwnd-build": "uglifyjs --compress --mangle --screw-ie8 --output dist/rwnd.min.js -- ./node_modules/js-yaml/dist/js-yaml.js ./node_modules/mustache/mustache.js ./node_modules/showdown/dist/showdown.js lib/rwnd.js"
+    }
+}
