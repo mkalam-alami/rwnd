@@ -1,0 +1,27 @@
+steps:
+    start:
+        links:
+            -   to: 1
+            
+    1:
+        set: 1
+        links:
+            -   to: 2
+                set: 2
+                unset: 1
+            -   to: no
+                if: 2
+            -   to: no
+                ifNot: 1
+    2:
+        set: list1,list2
+        links:
+            -   to: 3
+                if: list2,list1
+                ifNot: list3,list4
+    
+    3:
+        unset: 2, list1
+        
+    no:
+        text: unreachable

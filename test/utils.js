@@ -123,12 +123,12 @@ window.rwndTest = (function() {
         
         // Test functions > test links
         
-        this.visibleLinksMatch = function(linkIndexes, state) {
+        this.matchVisibleLinks = function(linkIndexes, state) {
             state = state || this.model.getLastState();
             var linkIndexesIndex = 0;
             var match = true;
             state.step.links.forEach(function(link, index) {
-                if (this.isLinkSatisfied(link, state.flags)) {
+                if (this.isLinkSatisfied(state, index)) {
                     if (index != linkIndexes[linkIndexesIndex]) {
                         match = false;
                     }
@@ -151,7 +151,7 @@ window.rwndTest = (function() {
         
         this.isFlagSet = function(flag) {
             var state = this.model.getLastState();
-            return state.flags[flag];
+            return !!state.flags[flag];
         }
         
         // Test functions > internal

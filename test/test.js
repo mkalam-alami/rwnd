@@ -44,4 +44,25 @@ describe("rwnd", function() {
         });
     });
     
+    it("should support a full set/unset if/ifNot scenario", function(done) {
+        rwndTest.run('story-flags.yml', function(game) {
+            var v = game.view;
+            v.clickLink('start', 0);
+            expect(v.isFlagSet('1')).toBe(true);
+            v.matchVisibleLinks(['2']);
+            
+            v.clickLink('1', 0);
+            expect(v.isFlagSet('1')).toBe(false);
+            expect(v.isFlagSet('2')).toBe(true);
+            expect(v.isFlagSet('list1')).toBe(true);
+            expect(v.isFlagSet('list2')).toBe(true);
+            v.matchVisibleLinks(['3']);
+            
+            v.clickLink('2', 0);
+            expect(v.isFlagSet('2')).toBe(false);
+            expect(v.isFlagSet('list1')).toBe(false);
+            
+            done();
+        });
+    });
 });
