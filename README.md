@@ -33,6 +33,11 @@ steps:
 2. Serve with your favorite web server (I like [http-server](https://www.npmjs.com/package/http-server) for development).
 3. Play!
 
+## Made with rwnd
+
+* [demo rwnd game](https://mkalam-alami.github.io/rwnd/)
+* [red spade ♠](marwane.kalam-alami.net/ld/36/?en)
+
 ## Advanced story syntax
 
 ### `set/unset`: Writing flags
@@ -102,8 +107,6 @@ Redirects work like `links`, except they are followed immediately, without displ
             -   to: eat
     eat:
         text: You eat it.
-        links:
-            [...]
 ```
 
 Of course, they can also work with flags:
@@ -116,6 +119,8 @@ Of course, they can also work with flags:
             -   to: bad_ending
                 ifNot: saved_the_world
 ```
+
+If several redirects are possible, only the first match is followed.
 
 ### `disableRewindTo`: Prevent rewinding the story
 
@@ -139,17 +144,17 @@ Markdown syntax is supported. You can also flavor the text with game flags, than
     monster:
         text: |
             "**A goblin appears!** 
-            {{#sword}}It looks at your sword and hesitates...{{/sword}}{{^sword}}It attacks you!{{/sword}}"
+            {{^sword}}It attacks you!{{/sword}}{{#sword}}It looks at your sword and hesitates...{{/sword}}"
 ```
 
 ### Configuration keys
 
 ```                 
 config:
-    initialStep: start   ### Allows to customize the initial step (defaults to `start`).
-    saveId: myGame   ### If set, the game will auto-save using that ID.
-    persistFlags: false   ### Allows to persist flags even if you rewind in the story (defaults to false).
-                          ### Unusual, but can yield cool time travel gameplay.
+    initialStep:  start   ### String. Allows to customize the initial step (defaults to start).
+    saveId:       myGame  ### String. If set, the game will auto-save using that ID.
+    persistFlags: false   ### Boolean? Allows to persist flags even if you rewind in the story.
+                          ### Unusual, but can lead to cool time travel gameplay (defaults to false).
 
 steps:
 [...]
@@ -157,7 +162,7 @@ steps:
 
 ## API
 
-To run properly the HTML must contain 2 elements with specific IDs (unless configured otherwise):
+Before launching a game, the page must contain 2 HTML elements with specific IDs (unless configured otherwise):
 
 * `rwnd-menu`: The location of the menu. 
 * `rwnd-step`: The location of the story. 
@@ -171,7 +176,7 @@ Example:
 </div>
 ```
 
-### `rwnd.loadFile(url[, options])`
+### `rwnd.run(url[, options])`
 
 All options are advanced, optional stuff.
 
@@ -184,7 +189,7 @@ All options are advanced, optional stuff.
 * `options.stepTemplate`: String. Replaces the default step HTML (Mustache template) with your own. See the sources for an example.
 * `options.customView`: Allows to completely replace the default game view with your own JS code. The object must have the same public API (see sources). Note that replacing the view will make all other options (but `callback`) obsolete.
 
-### `rwnd.load(data[, options])`
+### `rwnd.runString(data[, options])`
 
 Same as the previous call, except you're passing the YAML/JSON story directly (string or JSON object). The game will be loaded synchronously and return the `game`.
 
