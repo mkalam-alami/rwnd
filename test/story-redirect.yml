@@ -1,0 +1,26 @@
+steps:
+    start:
+        links:
+            -   to: 0
+            
+    0:
+        redirects:
+            -   to: 1
+                set: 1
+                
+    1:
+        redirects:
+            -   to: 2
+                if: 1
+            -   to: 3
+                ifNot: 1
+            -   to: 3
+                if: 1
+    2:
+        text: done
+        unset: 1
+        redirects:
+            -   to: 3
+    
+    3:
+        text: unreachable

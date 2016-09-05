@@ -76,6 +76,6 @@ describe("rwnd", function() {
         });
     });
     
-    // TODO test rewind, persistFlags, flags in text
+    // TODO test rewind, persistFlags, flags in text, cancel, restart, save/load
     
 });
