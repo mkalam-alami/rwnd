@@ -189,9 +189,13 @@ All options are advanced, optional stuff.
 * `options.stepTemplate`: String. Replaces the default step HTML (Mustache template) with your own. See the sources for an example.
 * `options.customView`: Object. Allows to completely replace the default game view with your own JS code. The object must have the same public API (see sources). Note that replacing the view will make all other options (but `callback`) obsolete.
 
+### `rwnd.run(url[, callback])`
+
+Alternate signature if you just want to pass a callback.
+
 ### `rwnd.runFromData(data[, options])`
 
-Same as the previous call, except you're passing the YAML/JSON story directly (string or JSON object). The game will be loaded synchronously and return the `game`.
+Same as the previous calls, except you're passing the YAML/JSON story directly (string or JSON object). The game will be loaded synchronously and return the `game`.
 
 ### `rwnd.download(url, callback)`
 

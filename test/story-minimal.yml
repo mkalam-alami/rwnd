@@ -1,0 +1,23 @@
+steps:
+    start:
+        text: You are in a cave. You can turn left or right.
+        links:
+            -   to: left
+                text: Turn left
+            -   to: right
+                text: Turn right
+            
+    left:
+        text: You turned left.
+        links:
+            -   to: monster
+                text: Keep walking
+                
+    right:
+        text: You turned right.
+        links:
+            -   to: monster
+                text: Keep walking
+            
+    monster:
+        text: A goblin appears!

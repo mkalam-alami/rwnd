@@ -24,6 +24,6 @@
     "license": "MIT",
     "scripts": {
         "test": "karma start",
-        "rwnd-build": "uglifyjs --compress --mangle --screw-ie8 --output dist/rwnd.min.js -- ./node_modules/js-yaml/dist/js-yaml.js ./node_modules/mustache/mustache.js ./node_modules/showdown/dist/showdown.js lib/rwnd.js"
+        "rwnd-dist": "uglifyjs --compress --mangle --screw-ie8 --output dist/rwnd.min.js -- ./node_modules/js-yaml/dist/js-yaml.js ./node_modules/mustache/mustache.js ./node_modules/showdown/dist/showdown.js lib/rwnd.js"
     }
 }
