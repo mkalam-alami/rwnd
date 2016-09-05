@@ -19,7 +19,21 @@
 <script type="text/javascript" src="lib/showdown.min.js"></script>
 <script type="text/javascript" src="lib/rwnd.js"></script>
 <script type="text/javascript">
-rwnd.loadFile('game.yaml.example');
+loadYml();
+
+function loadYml() {
+    rwnd.loadFile('game.yml', {
+        callback: loadJson
+    });
+}
+function loadJson() {
+    rwnd.loadFile('game.json', {
+        callback: loadExample
+    });
+}
+function loadExample() {
+    rwnd.loadFile('game.yml.example');
+}
 </script>
 
 </body>

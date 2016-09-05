@@ -7,91 +7,109 @@ A minimal interactive story engine.
 The story is written in either YAML or JSON, with something like:
 
 ```
-config:
-    start: initialStep
-    
 steps: 
-    initialStep:
+    start:
         text: You are in a cave. You can turn left or right.
         links:
-            left: Turn left
-            right: Turn right
-    left:
-        text: You turned left: As you walk, the corridor bends to the right.
-        links:
-            theEnd: Keep walking
-                
-    right:
-        text: You turned right. As you walk, the corridor bends to the left.
-        links:
-            theEnd: Keep walking
+            -   to: left
+                text: Turn left
+            -   to: right
+                text: Turn right
             
-    theEnd:
-        text: "You came back to where you came from: the end."
+    left:
+        text: You turned left. You find a sword.
+        links:
+            -   to: grabsword
+                set: sword
+                text: Grab the sword
+                
+[...]
 ```
 
-1. Write your story in a `game.yaml` (or `game.json`) file at the root
+1. Write your story in a `game.yml` (or `game.json`) file at the root
 2. Serve with your favorite web server (I like [http-server](https://www.npmjs.com/package/http-server) for development).
 3. Play!
 
-The whole thing is made to be hacked as you want, the code being quite short and hopefully readable.
+## Advanced story syntax
 
-## Advanced story features
+### `set/unset`: Writing flags
 
-### `setFlag/removeFlag`: Setting flags
-
-You can set and remove flags when reaching a step:
+You can set and remove flags when reaching a step or clicking a link:
 
 ```     
-    finding_sword:
-        text: "You just found a sword!"
-        setFlag: sword
+    pick_sword:
+        text: You just picked a sword!
+        **set: sword**
 ```
 
 ```     
     lose_sword:
-        text: "You just broke your sword!"
-        removeFlag: sword
+        text: You just broke your sword!
+        **unset: sword**
 ```
 
-### `ifFlag/ifNotFlag`: Using flags
+```   
+    find_sword:
+        text: You find a sword.
+        links:
+            -   to: encounter
+                **set: sword**
+                text: Grab the sword
+            -   to: encounter
+                text: Leave the sword
+```
 
-Flags are used to show or hide links, with the help of an alternate link format:
+### `if/ifNot`: Using flags
+
+The main purpose of flags is to show or hide links:
 
 ```     
     monster_encounter:
-        text: "A monster attacks you!"
+        text: A monster attacks you!
         links:
-          flee: Flee
-          attack_monster:
-            ifFlag: sword
-            text: "Attack with your sword"
+            -   flee: Flee
+            -   attack_monster:
+                **if: sword**
+                text: Attack with your sword
 ```
 
 ```     
     pnj_encounter:
-        text: "Do you have a sword?"
+        text: Do you have a sword?
         links:
-          pnj_lie:
-            ifNotFlag: sword
-            text: "Yes (lie)"
+            -   pnj_lie:
+                **ifNot: sword**
+                text: Yes (lie)
 ```
 
-### `continue`: Proceed immediately to the next step
+### `redirects`: Proceed immediately to the next step
 
-A step with this keyword jumps directly to the specified step. This can be useful when merging several story branches.
+Redirects work like `links`, except they are followed immediately, without displaying links.
 
 ``` 
-    abranch:
+    apple:
         text: You grab the apple.
-        continue: eat
-    bbranch:
+        redirects:
+            -   to: eat
+    orange:
         text: You grab the orange.
-        continue: eat
+        redirects:
+            -   to: eat
     eat:
         text: You eat it.
         links:
             [...]
+```
+
+Of course, you can also work with flags in redirects:
+
+``` 
+    ending_selection:
+        redirects:
+            -   to: good_ending
+                if: saved_the_world
+            -   to: bad_ending
+                ifNot: saved_the_world
 ```
 
 ### `disableRewindTo`: Prevent rewinding the story
@@ -120,28 +138,48 @@ Markdown syntax is supported. You can also flavor the text with game flags, than
 
 ```                 
     monster:
-        text: "**A goblin appears!** {{#sword}}It looks at your sword and hesitates...{{/sword}}"
+        text: "**A goblin appears!** {{#sword}}It looks at your sword and hesitates...{{/sword}}{{^sword}}It attacks you!{{/sword}}"
 ```
 
 ### Configuration keys
 
-* `start`: Mandatory. Sets the initial step.
-* `gameId`: Recommended. If set, the game will auto-save using that ID.
+* `initialStep`: Allows to customize the initial step (defaults to `start`).
+* `saveId`: If set, the game will auto-save using that ID.
 * `persistFlags`: Allows to persist flags even if you rewind in the story. Unusual, but can lead to interesting gameplay (defaults to false).
 
 ## API
 
-### `rwnd.loadFile(url[, callback])`
+To run properly the HTML must contain 2 elements with specific IDs (unless configured otherwise):
 
-* `url`: URL to either your YAML or JSON story.
-* `callback`: Optional callback to be called when the game has finished loading. The callback gets the `game` as a parameter (its API is not documented, see the sources), or false if the URL yields a 404.
+* `rwnd-menu`: The location of the menu. 
+* `rwnd-step`: The location of the story. 
 
-To run properly the DOM must contain 3 elements with specific IDs, see `index.html` for examples:
+Example:
 
-* `rwnd-container`: ID of the DOM element where the story will be displayed
-* `rwnd-step-template`: ID of a &lt;script> element containing the step template (Mustache syntax). 
-* `rwnd-menu-template`: ID of a &lt;script> element containing the menu links template. 
+```
+<div id="game">
+    <div id="rwnd-menu"></div>
+    <div id="rwnd-steps"></div>
+</div>
+```
 
-### `rwnd.load(data)`
+### `rwnd.loadFile(url[, options])`
+
+All options are advanced, optional stuff.
+
+* `url`: String. URL to either your YAML or JSON story.
+* `options.callback`: Function. Optional callback to be called when the game has finished loading. The callback gets the `game` as a parameter (its API is not documented, see the sources), or false if the URL yields a 404.
+* `options.disableDefaultCss`: Boolean. Prevents appending the default CSS.
+* `options.menuEl`: DOM Element. Sets a custom location for the menu.
+* `options.menuTemplate`: String. Replaces the default menu HTML with your own. Your HTML must contain elements with IDs `rwnd-cancel` and `rwnd-restart`.
+* `options.stepsEl`: DOM Element. Sets a custom location for the story.
+* `options.stepTemplate`: String. Replaces the default step HTML (Mustache template) with your own. See the sources for an example.
+* `options.customView`: Allows to completely replace the default game view with your own JS code. The object must have the same public API (see sources). Note that replacing the view will make all other options (but `callback`) obsolete.
+
+### `rwnd.load(data[, options])`
 
 Same as the previous call, except you're passing the YAML/JSON story directly (string or JSON object). The game will be loaded synchronously and return the `game`.
+
+### `rwnd.download(url, callback)`
+
+A little helper function in case you want to download one or several story files manually. The callback arguments are `[statusCode, text]`.
